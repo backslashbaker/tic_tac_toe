@@ -17,9 +17,27 @@ describe Board do
             board = Board.new
             user = Player.new('O')
             ai = Player.new('X')
+            game = Game.new
+           
 
-            user.take_turn(0, 0)
-            ai.take_turn(0, 1)
+            game.take_turn(0, 0, user)
+           
+
+            expect(board.display).to eq(" O |   |   \n------------\n   |   |   \n------------\n   |   |   ")
+        end
+
+    end
+
+    context "within a game" do
+        it "can decide if the player has won or not" do
+            board = Board.new
+            user = Player.new('O')
+            ai = Player.new('X')
+            game = Game.new(board, user, ai)
+           
+
+            game.take_turn(0, 0)
+            
 
             expect(board.display).to eq(" O | X |   \n------------\n   |   |   \n------------\n   |   |   ")
         end

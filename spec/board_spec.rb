@@ -30,4 +30,17 @@ describe Board do
 
     end
 
+    context "Within a game" do
+        it "knows a winning board" do
+            board = Board.new
+            board.update_grid(0, 1, 'X')
+            board.update_grid(0, 2, 'X')
+            board.update_grid(0, 3, 'X')
+
+            expect(board.winning_combination?).to eq true
+            
+        end
+
+    end
+
 end

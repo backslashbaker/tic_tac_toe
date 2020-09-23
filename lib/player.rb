@@ -1,3 +1,5 @@
+require_relative 'board'
+
 class Player
 
     attr_reader :marker
@@ -5,7 +7,5 @@ class Player
     def initialize(marker)
         @marker = marker
     end
-
-
 
 end
