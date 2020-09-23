@@ -7,12 +7,24 @@ describe Board do
             board = Board.new
 
             expect(board.grid).to eq Array.new(3, Array.new(3, " "))
+            
+        end
 
-            #expect(board.display).to eq(" #{@grid[0[0]]} | #{@grid[0[1]]} | #{@grid[0[2]]}\n
-                                       # ------------\n
-                                        #{@grid[1[0]]} | #{@grid[1[1]]} | #{@grid[1[2]]}\n
-                                        #------------\n
-                                        #{@grid[2[0]]} | #{@grid[2[1]]} | #{@grid[2[2]]}")
+    end
+
+    context "starting game" do
+        it "changes element of board array" do
+            board = Board.new
+            board.update_grid(0, 0, 'O')
+
+            expect(board.grid[0][0]).to eq('O')
+        end
+
+        it "changes element of board array for next player" do
+            board = Board.new
+            board.update_grid(0, 1, 'X')
+
+            expect(board.grid[0][1]).to eq('X')
         end
 
     end

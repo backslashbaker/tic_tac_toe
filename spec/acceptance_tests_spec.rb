@@ -11,12 +11,13 @@ describe Board do
 
     end
 
+    context "started a game" do
+        it "allows the user to mark 'O' on the board" do
+            board = Board.new
+
+            expect(board.display).to eq("   |   |   \n------------\n   |   |   \n------------\n   |   |   ")
+        end
+
+    end
+
 end
-
-# Given: a new game has started
-
-# When: a new game starts
-
-# Then: an empty board is initialised
-
-
