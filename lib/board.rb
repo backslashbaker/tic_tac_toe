@@ -3,7 +3,6 @@ class Board
 
     def initialize
         @grid = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        #@grid = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
     end
 
     WINNING_COMBINATIONS = [
@@ -23,12 +22,6 @@ class Board
 
     def update_grid(index, marker)
         @grid[index] = marker
-    end
-
-    def empty?(index)
-        if @grid[index].is_a?(Integer)
-            true
-        end
     end
 
     def valid_move?(index)
@@ -53,6 +46,22 @@ class Board
                 return true
             end
         }
+        return false
+    end
+
+    def draw?
+        if full? && !win?
+            return true
+        end
+        return false
+    end
+
+    private 
+
+    def empty?(index)
+        if @grid[index].is_a?(Integer)
+            return true
+        end
         return false
     end
 

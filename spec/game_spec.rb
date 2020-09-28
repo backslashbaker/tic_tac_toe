@@ -28,14 +28,5 @@ To-do:
 - take_turn method (takes user input, checks valid, if so moves current player then displays board)
 - current_player?
 - turn_counter
-- winning board
-    - vertical win
-    - horizontal win
-    - diagonal win
-- board is full?
 
-"1" | "2" 
-puts "#{game.board.grid[0]} | #{game.board.grid[1]}"
-puts "---------"
-puts "#{game.board.grid[0]} | #{game.board.grid[1]}"
 =end

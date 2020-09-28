@@ -106,4 +106,21 @@ describe Board do
         end
     end
 
+    context "When board is drawn" do
+        it "returns true" do
+            board = Board.new
+            board.update_grid(0, "O")
+            board.update_grid(1, "X")
+            board.update_grid(2, "O")
+            board.update_grid(3, "X")
+            board.update_grid(4, "X")
+            board.update_grid(5, "O")
+            board.update_grid(6, "X")
+            board.update_grid(7, "O")
+            board.update_grid(8, "X")
+
+            expect(board.draw?).to eq(true)
+        end
+    end
+
 end
