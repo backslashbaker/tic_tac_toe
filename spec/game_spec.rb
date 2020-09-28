@@ -30,12 +30,28 @@ describe Board do
         end
     end
 
+    context "in game" do
+        it "updates turn_counter when player_one moves" do
+            game = Game.new
+
+            expect(game.current_player).to eq(game.player_one)
+        end
+
+        it "updates turn_counter when player_one moves" do
+            game = Game.new
+            game.move(0, game.player_one)
+
+            expect(game.current_player).to eq(game.player_two)
+        end
+    end
+
+    context "user takes turn" do
+        it "takes user input and marks a valid move" do
+            game = Game.new
+            game.take_turn
+
+            expect(game.board.grid[0]).to eq "O"
+        end
+    end
+
 end
-
-=begin
-To-do:
-- take_turn method (takes user input, checks valid, if so moves current player then displays board)
-- current_player? (if even then player 1, if odd then player 2)
-- turn_counter = 0, when call move method, adds 1
-
-=end
