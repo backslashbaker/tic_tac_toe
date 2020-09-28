@@ -33,4 +33,9 @@ To-do:
     - horizontal win
     - diagonal win
 - board is full?
+
+"1" | "2" 
+puts "#{game.board.grid[0]} | #{game.board.grid[1]}"
+puts "---------"
+puts "#{game.board.grid[0]} | #{game.board.grid[1]}"
 =end

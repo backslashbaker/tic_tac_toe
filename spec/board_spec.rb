@@ -7,7 +7,7 @@ describe Board do
         it "initialises an empty board" do
             board = Board.new
 
-            expect(board.grid).to eq Array.new(9, " ")
+            expect(board.grid).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
             
         end
     end
@@ -68,17 +68,24 @@ describe Board do
         end
     end
 
-    context "Within a game" do
-        xit "knows a winning board" do
+    context "checking if we have a winning board" do
+        it "knows a winning board" do
             board = Board.new
-            board.update_grid(0, 1, 'X')
-            board.update_grid(0, 2, 'X')
-            board.update_grid(0, 3, 'X')
+            board.update_grid(0, 'X')
+            board.update_grid(1, 'X')
+            board.update_grid(2, 'X')
 
-            expect(board.winning_combination?).to eq(true)
-            
+            expect(board.win?).to eq(true)
         end
 
+        it "knows non winning board" do
+            board = Board.new
+            board.update_grid(0, 'X')
+            board.update_grid(1, 'O')
+            board.update_grid(2, 'X')
+
+            expect(board.win?).to eq(false)
+        end
     end
 
 end
