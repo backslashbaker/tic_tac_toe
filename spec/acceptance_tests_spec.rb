@@ -13,7 +13,7 @@ describe Board do
     end
 
     context "started a game" do
-        it "allows the user to mark 'O' on the board" do
+        xit "allows the user to mark 'O' on the board" do
             game = Game.new
            
             game.take_turn(0, 0, @player_one)

@@ -14,6 +14,10 @@ class Game
         @player_two = Player.new('X')
     end
 
+    def welcome_message
+        return "Welcome to Tic Tac Toe"
+    end
+
     def take_turn(row, col, player)
         @board.update_grid(row, col, player.marker)
     end

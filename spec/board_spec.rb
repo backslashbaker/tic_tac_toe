@@ -31,7 +31,7 @@ describe Board do
     end
 
     context "Within a game" do
-        it "knows a winning board" do
+        xit "knows a winning board" do
             board = Board.new
             board.update_grid(0, 1, 'X')
             board.update_grid(0, 2, 'X')
