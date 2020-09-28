@@ -18,7 +18,7 @@ class Game
         return "Welcome to Tic Tac Toe"
     end
 
-    def move(row, col, player)
-        @board.update_grid(row, col, player.marker)
+    def move(index, player)
+        @board.update_grid(index, player.marker)
     end
 end

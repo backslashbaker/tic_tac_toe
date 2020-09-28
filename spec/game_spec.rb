@@ -13,11 +13,28 @@ describe Board do
     end
 
     context "in game" do
-        it "updates the board when player_one takes a turn" do
+        it "updates the board when player_one moves" do
             game = Game.new
-            game.move(0, 0, game.player_one)
+            game.move(0, game.player_one)
 
-            expect(game.board.grid[0][0]).to eq("O")
+            expect(game.board.grid[0]).to eq("O")
+        end
+    end
+
+    context "move validation" do
+        it "validates player moves when something is in that square" do
+            game = Game.new
+            game.move(0, game.player_one)
+
+            expect(game.valid_move?(0)).to eq(false)
         end
     end
 end
+
+=begin
+To-do:
+- take_turn method (takes user input, checks valid, if so moves current player then displays board)
+- check_valid?
+- current_player?
+- turn_counter
+=end
