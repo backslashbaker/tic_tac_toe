@@ -21,4 +21,12 @@ class Board
         end
     end
 
+    def full?
+        if @grid.all? { |square| square == 'X' || square == 'O'}
+            true
+        else
+            false
+        end
+    end
+
 end

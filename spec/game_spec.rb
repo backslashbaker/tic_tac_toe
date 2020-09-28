@@ -26,7 +26,11 @@ end
 =begin
 To-do:
 - take_turn method (takes user input, checks valid, if so moves current player then displays board)
-- check_valid?
 - current_player?
 - turn_counter
+- winning board
+    - vertical win
+    - horizontal win
+    - diagonal win
+- board is full?
 =end

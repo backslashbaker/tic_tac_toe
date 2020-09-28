@@ -44,6 +44,30 @@ describe Board do
         end
     end
 
+    context "checking if board is full" do
+        it "returns true if board is full" do
+            board = Board.new
+            board.update_grid(0, "O")
+            board.update_grid(1, "O")
+            board.update_grid(2, "O")
+            board.update_grid(3, "O")
+            board.update_grid(4, "O")
+            board.update_grid(5, "O")
+            board.update_grid(6, "O")
+            board.update_grid(7, "O")
+            board.update_grid(8, "O")
+
+            expect(board.full?).to eq(true)
+        end
+
+        it "returns false if board is not full" do
+            board = Board.new
+            board.update_grid(8, "O")
+
+            expect(board.full?).to eq(false)
+        end
+    end
+
     context "Within a game" do
         xit "knows a winning board" do
             board = Board.new
@@ -51,7 +75,7 @@ describe Board do
             board.update_grid(0, 2, 'X')
             board.update_grid(0, 3, 'X')
 
-            expect(board.winning_combination?).to eq true
+            expect(board.winning_combination?).to eq(true)
             
         end
 
