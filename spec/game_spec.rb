@@ -12,8 +12,8 @@ describe Board do
         end
     end
 
-    context "new game" do
-        it "it displays a welcome message to users" do
+    context "in game" do
+        it "updates the board when player_one takes a turn" do
             game = Game.new
             game.take_turn(0, 0, game.player_one)
 
