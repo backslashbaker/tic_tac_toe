@@ -21,12 +21,21 @@ describe Board do
         end
     end
 
+    context "in game" do
+        it "updates turn_counter when player_one moves" do
+            game = Game.new
+            game.move(0, game.player_one)
+
+            expect(game.turn_counter).to eq(1)
+        end
+    end
+
 end
 
 =begin
 To-do:
 - take_turn method (takes user input, checks valid, if so moves current player then displays board)
-- current_player?
-- turn_counter
+- current_player? (if even then player 1, if odd then player 2)
+- turn_counter = 0, when call move method, adds 1
 
 =end

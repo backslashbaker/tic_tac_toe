@@ -5,13 +5,14 @@ require_relative 'player'
 
 class Game
 
-    attr_accessor :board
+    attr_accessor :board, :turn_counter
     attr_reader :player_one, :player_two
 
     def initialize
         @board = Board.new
         @player_one = Player.new('O')
         @player_two = Player.new('X')
+        @turn_counter = 0
     end
 
     def welcome_message
@@ -24,6 +25,7 @@ class Game
 
     def move(index, player)
         @board.update_grid(index, player.marker)
+        @turn_counter += 1
     end
 
 end
