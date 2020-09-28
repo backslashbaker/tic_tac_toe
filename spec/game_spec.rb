@@ -15,7 +15,7 @@ describe Board do
     context "in game" do
         it "updates the board when player_one takes a turn" do
             game = Game.new
-            game.take_turn(0, 0, game.player_one)
+            game.move(0, 0, game.player_one)
 
             expect(game.board.grid[0][0]).to eq("O")
         end
