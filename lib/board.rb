@@ -16,10 +16,6 @@ class Board
         [2, 4, 6] # diagonal right
     ]
 
-    def display
-        return " #{@grid[0]} | #{@grid[1]} | #{@grid[2]} \n------------\n #{@grid[3]} | #{@grid[4]} | #{@grid[5]} \n------------\n #{@grid[6]} | #{@grid[7]} | #{@grid[8]} "
-    end
-
     def update_grid(index, marker)
         @grid[index] = marker
     end

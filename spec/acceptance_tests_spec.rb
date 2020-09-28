@@ -1,23 +1,14 @@
 require_relative '../lib/board'
 require_relative '../lib/player'
+require_relative '../lib/game'
 
 describe Board do
     
     context "new game" do
-        xit "initialises an empty board" do
-            board = Board.new
-
-            expect(board.display).to eq("   |   |   \n------------\n   |   |   \n------------\n   |   |   ")
-        end
-    end
-
-    context "started a game" do
-        xit "allows the user to mark 'O' on the board" do
+        it "displays an empty board with 1-9 in squares" do
             game = Game.new
-           
-            game.move(0, @player_one)
-           
-            expect(board.display).to eq(" O |   |   \n------------\n   |   |   \n------------\n   |   |   ")
+
+            expect(game.display).to eq(" 1 | 2 | 3 \n------------\n 4 | 5 | 6 \n------------\n 7 | 8 | 9 ")
         end
     end
 
