@@ -10,7 +10,6 @@ describe Board do
             expect(board.grid).to eq Array.new(9, " ")
             
         end
-
     end
 
     context "starting game" do
@@ -27,7 +26,22 @@ describe Board do
 
             expect(board.grid[1]).to eq('X')
         end
+    end
 
+    context "move validation" do
+        it "validates player moves when something is in that square" do
+            board = Board.new
+            board.update_grid(0, "O")
+
+            expect(board.valid_move?(0)).to eq(false)
+        end
+
+        it "validates player moves when something is not in that square" do
+            board = Board.new
+            board.update_grid(0, "O")
+
+            expect(board.valid_move?(1)).to eq(true)
+        end
     end
 
     context "Within a game" do

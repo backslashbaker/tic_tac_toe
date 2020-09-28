@@ -21,14 +21,6 @@ describe Board do
         end
     end
 
-    context "move validation" do
-        it "validates player moves when something is in that square" do
-            game = Game.new
-            game.move(0, game.player_one)
-
-            expect(game.valid_move?(0)).to eq(false)
-        end
-    end
 end
 
 =begin

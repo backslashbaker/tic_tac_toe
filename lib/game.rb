@@ -21,4 +21,5 @@ class Game
     def move(index, player)
         @board.update_grid(index, player.marker)
     end
+
 end

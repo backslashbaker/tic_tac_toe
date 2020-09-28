@@ -13,4 +13,12 @@ class Board
         @grid[index] = marker
     end
 
+    def valid_move?(index)
+        if ["", " ", nil].include?(@grid[index])
+            return true
+        else
+            false
+        end
+    end
+
 end
