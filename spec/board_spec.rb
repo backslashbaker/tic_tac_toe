@@ -69,7 +69,7 @@ describe Board do
     end
 
     context "checking if we have a winning board" do
-        it "knows a winning board" do
+        it "knows a winning board (first row)" do
             board = Board.new
             board.update_grid(0, 'X')
             board.update_grid(1, 'X')
@@ -85,6 +85,24 @@ describe Board do
             board.update_grid(2, 'X')
 
             expect(board.win?).to eq(false)
+        end
+
+        it "knows a winning board (vertical right)" do
+            board = Board.new
+            board.update_grid(2, 'X')
+            board.update_grid(5, 'X')
+            board.update_grid(8, 'X')
+
+            expect(board.win?).to eq(true)
+        end
+
+        it "knows a winning board (diagonal left)" do
+            board = Board.new
+            board.update_grid(0, 'X')
+            board.update_grid(4, 'X')
+            board.update_grid(8, 'X')
+
+            expect(board.win?).to eq(true)
         end
     end
 

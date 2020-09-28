@@ -57,8 +57,3 @@ class Board
     end
 
 end
-
-=begin 
-combination = [3, 4, 5]
-grid[combination[0]] == grid[4] == grid[5] then win
-=end
