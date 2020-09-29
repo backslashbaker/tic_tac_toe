@@ -7,8 +7,12 @@ class Display
         @output = output
     end
 
-    def welcome 
+    def welcome_message 
         @output.puts "Welcome to Tic Tac Toe"
+    end
+
+    def display_board(grid)
+        @output.print " #{grid[0]} | #{grid[1]} | #{grid[2]} \n------------\n #{grid[3]} | #{grid[4]} | #{grid[5]} \n------------\n #{grid[6]} | #{grid[7]} | #{grid[8]} "
     end
 
 end
