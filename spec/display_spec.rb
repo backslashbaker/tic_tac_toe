@@ -40,6 +40,26 @@ describe Display do
             display.get_input
         end
     end
+
+    context "user prompt " do
+        it "displays a prompt for user to choose a place to mark on board" do
+            display = Display.new(input, output)
+
+            display.request_index
+
+            expect(output.string).to eq("Please choose a number between 1 - 9: ")
+        end
+    end
+
+    context "error handling" do
+        it "displays an error message when user enters incorrect index" do
+            display = Display.new(input, output)
+
+            display.error_message
+
+            expect(output.string).to eq("Input error. Try again.")
+        end
+    end
        
 
 end

@@ -30,23 +30,24 @@ class Game
     end
 
     def take_turn
-        puts " \n Please enter a number from 1-9"
+        @display.request_index
         user_index = @display.get_input
         user_index = user_index.chomp.to_i - 1
         if @board.valid_move?(user_index)
             move(user_index, current_player)
         else
+
             take_turn
         end
         puts @display.display_board(@board.grid)
     end
 
-    #def play
-        #@display.welcome_message
-        #puts ""
-        #@display.display_board(@board.grid)
-        #take_turn
-    #end
+    # def play
+    #     @display.welcome_message
+    #     puts ""
+    #     @display.display_board(@board.grid)
+    #     take_turn
+    # end
 
 end
 

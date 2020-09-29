@@ -19,4 +19,11 @@ class Display
         @input.gets
     end
 
+    def request_index
+        @output.print "Please choose a number between 1 - 9: "
+    end
+
+    def error_message
+        @output.print "Input error. Try again."
+    end
 end
