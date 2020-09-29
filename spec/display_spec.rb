@@ -12,7 +12,7 @@ describe Display do
 
             display.welcome_message
 
-            expect(output.string).to eq("Welcome to Tic Tac Toe\n")
+            expect(output.string).to eq("Welcome to Tic Tac Toe\n ")
         end
     end
 
@@ -24,8 +24,20 @@ describe Display do
 
             display.display_board(grid)
 
-            expect(output.string).to eq(" 1 | 2 | 3 \n------------\n 4 | 5 | 6 \n------------\n 7 | 8 | 9 ")
+            expect(output.string).to eq(" 1 | 2 | 3 \n------------\n 4 | 5 | 6 \n------------\n 7 | 8 | 9 \n ")
         
+        end
+    end
+
+    context "gets user input" do
+        it "asks user to choose a coordinate" do
+            display = Display.new(input, output)
+
+            display.get_input
+
+            expect(input).to receive(:gets).and_return('5')
+
+            display.get_input
         end
     end
        
