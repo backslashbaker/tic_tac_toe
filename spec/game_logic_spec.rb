@@ -86,4 +86,37 @@ describe GameLogic do
             expect(game_logic.draw?(board)).to eq(true)
         end
     end
+
+    # context "" do
+    #     it " " do
+    #         game_logic = GameLogic.new
+    #         board = Board.new
+
+    #         board.update_grid(0, 'X')
+    #         board.update_grid(4, 'X')
+    #         board.update_grid(8, 'X')
+
+    #         expect(game_logic.game_result).to eq('X')
+
+    #     end
+    # end
 end
+
+# def game_result
+#     if win?
+#     player_one / player_two
+#     else
+#         nil
+#     end
+# end
+
+# def game_result_message(player)
+#     if player == nil
+#         @output.print "You're crap it was a draw"
+#     else
+#         @output.print "#{player} has won" 
+#     end
+# end
+
+# @display.winner(@game_logic.game_result)
+# @display.draw@game_logic.game_result)

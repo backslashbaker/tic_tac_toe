@@ -62,7 +62,6 @@ end
 
 =begin
 To-do:
-- play method (running =true. welcome message, displays board, while running: if board isnt full/winner/draw, then take turn, else, running = false, return game_result)
 - game_result method
 
 =end
