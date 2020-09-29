@@ -46,7 +46,7 @@ describe Board do
     end
 
     context "user takes turn" do
-        it "takes user input and marks a valid move" do
+        xit "takes user input and marks a valid move" do
             game = Game.new
             game.take_turn
 
