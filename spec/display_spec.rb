@@ -12,7 +12,7 @@ describe Display do
 
             display.welcome_message
 
-            expect(output.string).to eq("Welcome to Tic Tac Toe\n ")
+            expect(output.string).to eq("Welcome to Tic Tac Toe\n\n")
         end
     end
 
@@ -24,7 +24,7 @@ describe Display do
 
             display.display_board(grid)
 
-            expect(output.string).to eq(" 1 | 2 | 3 \n------------\n 4 | 5 | 6 \n------------\n 7 | 8 | 9 \n ")
+            expect(output.string).to eq(" 1 | 2 | 3 \n------------\n 4 | 5 | 6 \n------------\n 7 | 8 | 9 \n\n")
         
         end
     end
@@ -57,7 +57,7 @@ describe Display do
 
             display.error_message
 
-            expect(output.string).to eq("Input error. Try again.")
+            expect(output.string).to eq("Input error. Try again.\n")
         end
     end
        
