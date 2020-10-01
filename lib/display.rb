@@ -29,8 +29,8 @@ class Display
         @output.print "Input error. Try again.\n"
     end
 
-    def game_result_message
-        @output.print "X wins!"
+    def player_wins_message(player)
+        @output.print "#{player.marker} wins!"
     end
 end
 

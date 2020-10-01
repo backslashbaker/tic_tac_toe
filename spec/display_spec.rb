@@ -1,5 +1,5 @@
 require_relative '../lib/display'
-#require_relative '../lib/board'
+require_relative '../lib/player'
 
 describe Display do
 
@@ -64,10 +64,22 @@ describe Display do
     context "when X wins the game" do
         it "displays a win message" do
             display = Display.new(input, output)
+            player_two = Player.new("X")
 
-            display.game_result_message
+            display.player_wins_message(player_two)
 
             expect(output.string).to eq("X wins!")
+        end
+    end
+
+    context "when O wins the game" do
+        it "displays a win message" do
+            display = Display.new(input, output)
+            player_one = Player.new("O")
+
+            display.player_wins_message(player_one)
+
+            expect(output.string).to eq("O wins!")
         end
     end
        
