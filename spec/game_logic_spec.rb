@@ -121,45 +121,4 @@ describe GameLogic do
         end
     end
 
-    # context "when player has won" do
-    #     xit "returns their marker" do
-    #         game = Game.new
-
-    #         allow($stdin).to receive(:gets).and_return(6, 1, 4, 5, 2, 9)
-    #         game.play
-
-    #         expect(game.game_logic.game_result(game.display, game.board, game.previous_player)).to eq("X wins!")
-    #     end
-    # end
-
-    # context "when a different player has won" do
-    #     it "returns their marker" do
-    #         game = Game.new
-
-    #         allow($stdin).to receive(:gets).and_return(1, 4, 5, 2, 9)
-    #         game.play
-    #         game.game_logic.game_result(game.display, game.board, game.previous_player)
-
-    #         expect { game.game_logic.game_result(game.display, game.board, game.previous_player) }.to output("O wins!\n").to_stdout
-    #     end
-    # end
 end
-
-# def game_result
-#     if win?
-#     player_one / player_two
-#     else
-#         nil
-#     end
-# end
-
-# def game_result_message(player)
-#     if player == nil
-#         @output.print "You're crap it was a draw"
-#     else
-#         @output.print "#{player} has won" 
-#     end
-# end
-
-# @display.winner(@game_logic.game_result)
-# @display.draw@game_logic.game_result)
