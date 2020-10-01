@@ -43,17 +43,17 @@ class Game
         @display.display_board(@board.grid)
     end
 
-    # def play
-    #     @display.welcome_message
-    #     @display.display_board(@board.grid)
-    #     loop do
-    #         until @board.full? or @game_logic.win?(@board)
-    #             take_turn
-    #         end
-    #         break
-    #     end
-    #     @display.display_board(@board.grid)
-    # end
+    def play
+        @display.welcome_message
+        @display.display_board(@board.grid)
+        loop do
+            until @board.full? or @game_logic.win?(@board)
+                take_turn
+            end
+            break
+        end
+        @display.display_board(@board.grid)
+    end
 
 end
 
