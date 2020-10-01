@@ -38,8 +38,9 @@ describe Board do
     end
 
     context "user takes turn" do
-        xit "takes user input and marks a valid move" do
+        it "takes user input and marks a valid move" do
             game = Game.new
+            allow($stdin).to receive(:gets).and_return(1)
             game.take_turn
 
             expect(game.board.grid[0]).to eq "O"

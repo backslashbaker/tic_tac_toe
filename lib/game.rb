@@ -33,7 +33,7 @@ class Game
     def take_turn
         @display.request_index
         user_index = @display.get_input
-        user_index = user_index.chomp.to_i - 1
+        user_index = user_index.to_i - 1
         if @game_logic.valid_move?(@board, user_index)
             move(user_index, current_player)
         else
@@ -63,5 +63,7 @@ end
 =begin
 To-do:
 - game_result method
+- play method and tests
+- make new classes
 
 =end
