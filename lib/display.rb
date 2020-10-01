@@ -28,6 +28,10 @@ class Display
     def error_message
         @output.print "Input error. Try again.\n"
     end
+
+    def game_result
+        @output.print "X wins!"
+    end
 end
 
 =begin

@@ -63,7 +63,6 @@ end
 =begin
 To-do:
 - game_result method
-- play method and tests
 - make new classes
 
 =end

@@ -60,5 +60,15 @@ describe Display do
             expect(output.string).to eq("Input error. Try again.\n")
         end
     end
+
+    context "when X wins the game" do
+        it "displays a win message" do
+            display = Display.new(input, output)
+
+            display.game_result
+
+            expect(output.string).to eq("X wins!")
+        end
+    end
        
 end
