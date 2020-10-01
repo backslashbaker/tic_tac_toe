@@ -2,7 +2,7 @@ require_relative '../lib/game'
 require_relative '../lib/board'
 require_relative '../lib/player'
 
-describe Board do
+describe Game do
 
     context "in game" do
         it "updates the board when player_one moves" do

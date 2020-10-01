@@ -89,24 +89,25 @@ describe GameLogic do
     end
 
     context "when player has won" do
-        it "returns their marker" do
+        xit "returns their marker" do
             game = Game.new
 
             allow($stdin).to receive(:gets).and_return(6, 1, 4, 5, 2, 9)
             game.play
 
-            expect(game.game_logic.game_result(game.board, game.previous_player)).to eq('X')
+            expect(game.game_logic.game_result(game.display, game.board, game.previous_player)).to eq("X wins!")
         end
     end
 
     context "when a different player has won" do
-        it "returns their marker" do
+        xit "returns their marker" do
             game = Game.new
 
             allow($stdin).to receive(:gets).and_return(1, 4, 5, 2, 9)
             game.play
+            game.game_logic.game_result(game.display, game.board, game.previous_player)
 
-            expect(game.game_logic.game_result(game.board, game.previous_player)).to eq('O')
+            expect { game.game_logic.game_result(game.display, game.board, game.previous_player) }.to output("O wins!").to_stdout
         end
     end
 end

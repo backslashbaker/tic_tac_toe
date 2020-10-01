@@ -8,7 +8,6 @@ describe Board do
             board = Board.new
 
             expect(board.grid).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
-            
         end
     end
 
