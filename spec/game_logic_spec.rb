@@ -95,7 +95,7 @@ describe GameLogic do
             allow($stdin).to receive(:gets).and_return(6, 1, 4, 5, 2, 9)
             game.play
 
-            expect(game.game_logic.winner(game.board, game.previous_player)).to eq(game.player_two)
+            expect(game.game_logic.game_result(game.board, game.previous_player)).to eq(game.player_two)
         end
     end
 
@@ -106,7 +106,18 @@ describe GameLogic do
             allow($stdin).to receive(:gets).and_return(1, 4, 5, 2, 9)
             game.play
 
-            expect(game.game_logic.winner(game.board, game.previous_player)).to eq(game.player_one)
+            expect(game.game_logic.game_result(game.board, game.previous_player)).to eq(game.player_one)
+        end
+    end
+
+    context "when we have a draw" do
+        it "returns nil" do
+            game = Game.new
+
+            allow($stdin).to receive(:gets).and_return(9, 1, 2, 3, 5, 4, 6, 8, 7)
+            game.play
+
+            expect(game.game_logic.game_result(game.board, game.previous_player)).to eq(nil)
         end
     end
 

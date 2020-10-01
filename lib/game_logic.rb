@@ -35,9 +35,11 @@ class GameLogic
         return false
     end
 
-    def winner(board, player)
+    def game_result(board, player)
         if win?(board)
             return player
+        else
+            return nil
         end
     end
 
