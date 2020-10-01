@@ -88,28 +88,50 @@ describe GameLogic do
         end
     end
 
-    context "when player has won" do
-        xit "returns their marker" do
+    context "when a player has won" do
+        it "returns the name of the player who has won" do
             game = Game.new
 
             allow($stdin).to receive(:gets).and_return(6, 1, 4, 5, 2, 9)
             game.play
 
-            expect(game.game_logic.game_result(game.display, game.board, game.previous_player)).to eq("X wins!")
+            expect(game.game_logic.winner(game.board, game.previous_player)).to eq(game.player_two)
         end
     end
 
-    context "when a different player has won" do
-        xit "returns their marker" do
+    context "when another player has won" do
+        it "returns the name of the other player" do
             game = Game.new
 
             allow($stdin).to receive(:gets).and_return(1, 4, 5, 2, 9)
             game.play
-            game.game_logic.game_result(game.display, game.board, game.previous_player)
 
-            expect { game.game_logic.game_result(game.display, game.board, game.previous_player) }.to output("O wins!").to_stdout
+            expect(game.game_logic.winner(game.board, game.previous_player)).to eq(game.player_one)
         end
     end
+
+    # context "when player has won" do
+    #     xit "returns their marker" do
+    #         game = Game.new
+
+    #         allow($stdin).to receive(:gets).and_return(6, 1, 4, 5, 2, 9)
+    #         game.play
+
+    #         expect(game.game_logic.game_result(game.display, game.board, game.previous_player)).to eq("X wins!")
+    #     end
+    # end
+
+    # context "when a different player has won" do
+    #     it "returns their marker" do
+    #         game = Game.new
+
+    #         allow($stdin).to receive(:gets).and_return(1, 4, 5, 2, 9)
+    #         game.play
+    #         game.game_logic.game_result(game.display, game.board, game.previous_player)
+
+    #         expect { game.game_logic.game_result(game.display, game.board, game.previous_player) }.to output("O wins!\n").to_stdout
+    #     end
+    # end
 end
 
 # def game_result

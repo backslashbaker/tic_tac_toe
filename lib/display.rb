@@ -30,6 +30,7 @@ class Display
     end
 
     def player_wins_message(player)
+        #puts "#{player.marker} wins!"
         @output.print "#{player.marker} wins!"
     end
 end

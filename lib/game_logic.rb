@@ -35,11 +35,18 @@ class GameLogic
         return false
     end
 
-    def game_result(display, board, player)
+    def winner(board, player)
         if win?(board)
-            return display.player_wins_message(player)
+            return player
         end
     end
+
+    # def game_result(display, board, player)
+    #     if win?(board)
+    #         #puts "-----------------------game result"
+    #         display.player_wins_message(player)
+    #     end
+    # end
 
     private 
 
