@@ -65,7 +65,7 @@ describe Display do
         it "displays a win message" do
             display = Display.new(input, output)
 
-            display.game_result
+            display.game_result_message
 
             expect(output.string).to eq("X wins!")
         end

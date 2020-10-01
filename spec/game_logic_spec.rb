@@ -1,5 +1,6 @@
 require_relative '../lib/game_logic'
 require_relative '../lib/board'
+require_relative '../lib/game'
 
 describe GameLogic do
     context "move validation" do
@@ -87,19 +88,27 @@ describe GameLogic do
         end
     end
 
-    # context "" do
-    #     it " " do
-    #         game_logic = GameLogic.new
-    #         board = Board.new
+    context "when player has won" do
+        it "returns their marker" do
+            game = Game.new
 
-    #         board.update_grid(0, 'X')
-    #         board.update_grid(4, 'X')
-    #         board.update_grid(8, 'X')
+            allow($stdin).to receive(:gets).and_return(6, 1, 4, 5, 2, 9)
+            game.play
 
-    #         expect(game_logic.game_result).to eq('X')
+            expect(game.game_logic.game_result(game.board, game.previous_player)).to eq('X')
+        end
+    end
 
-    #     end
-    # end
+    context "when a different player has won" do
+        it "returns their marker" do
+            game = Game.new
+
+            allow($stdin).to receive(:gets).and_return(1, 4, 5, 2, 9)
+            game.play
+
+            expect(game.game_logic.game_result(game.board, game.previous_player)).to eq('O')
+        end
+    end
 end
 
 # def game_result

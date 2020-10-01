@@ -35,6 +35,13 @@ class GameLogic
         return false
     end
 
+    def game_result(board, current_player)
+        if win?(board)
+            return current_player.marker
+        end
+        #return "X"
+    end
+
     private 
 
     def empty?(board, index)

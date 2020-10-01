@@ -30,6 +30,14 @@ class Game
         end
     end
 
+    def previous_player
+        if turn_counter.odd?
+            @player_one
+        else
+            player_two
+        end
+    end
+
     def take_turn
         @display.request_index
         user_index = @display.get_input

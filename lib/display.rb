@@ -29,7 +29,7 @@ class Display
         @output.print "Input error. Try again.\n"
     end
 
-    def game_result
+    def game_result_message
         @output.print "X wins!"
     end
 end
