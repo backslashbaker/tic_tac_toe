@@ -66,8 +66,8 @@ class Game
 
 end
 
-# game = Game.new
-# game.play
+#game = Game.new
+#game.play
 
 =begin
 To-do:
