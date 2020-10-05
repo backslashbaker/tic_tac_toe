@@ -13,7 +13,7 @@ class Game
         @player_one = Player.new('O')
         @player_two = Player.new('X')
         @turn_counter = 0
-        @display = Display.new($stdin, $stdout)
+        @display = Display.new
         @game_logic = GameLogic.new
     end
 
@@ -40,13 +40,14 @@ class Game
 
     def take_turn
         @display.request_index
-        user_index = @display.get_input
+        user_index = gets
+        p "hello #{user_index}"
         user_index = user_index.to_i - 1
         if @game_logic.valid_move?(@board, user_index)
             move(user_index, current_player)
         else
             @display.error_message
-            take_turn
+            #take_turn
         end
         @display.display_board(@board.grid)
     end

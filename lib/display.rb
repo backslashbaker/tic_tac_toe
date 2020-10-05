@@ -2,10 +2,6 @@ require_relative 'board'
 
 class Display
 
-    def initialize
-
-    end
-
     def welcome_message 
         print "Welcome to Tic Tac Toe\n\n"
     end
