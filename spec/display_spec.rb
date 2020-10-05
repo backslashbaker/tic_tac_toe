@@ -1,5 +1,6 @@
 require_relative '../lib/display'
 require_relative '../lib/player'
+require_relative '../lib/game'
 
 describe Display do
 
@@ -61,35 +62,23 @@ describe Display do
         end
     end
 
-    context "when O wins the game" do
-        xit "displays a win message" do
-            game = Game.new
+    context "when X wins the game" do
+        it "displays a win message" do
+            display = Display.new(input, output)
+            player_two = Player.new("X")
 
-            allow($stdin).to receive(:gets).and_return(1, 4, 5, 2, 9)
-            game.play
-            game.display.game_result_message(game.game_logic.game_result(game.board, game.previous_player))
+            display.game_result_message(player_two)
 
-            expect(output.string).to eq("O wins!")
+            expect(output.string).to eq("X wins!")
         end
     end
 
-    # context "when X wins the game" do
-    #     it "displays a win message" do
-    #         display = Display.new(input, output)
-    #         player_two = Player.new("X")
-
-    #         display.player_wins_message(player_two)
-
-    #         expect(output.string).to eq("X wins!")
-    #     end
-    # end
-
     context "when O wins the game" do
-        xit "displays a win message" do
+        it "displays a win message" do
             display = Display.new(input, output)
             player_one = Player.new("O")
 
-            display.player_wins_message(player_one)
+            display.game_result_message(player_one)
 
             expect(output.string).to eq("O wins!")
         end
