@@ -117,6 +117,20 @@ describe "Tic-Tac-Toe" do
         end
     end
 
+    context "when a player wins" do
+        it "displays a win message" do
+            # Arrange
+            game = Game.new
+
+            # Act 
+            allow($stdin).to receive(:gets).and_return(9, 1, 5, 2, 8, 3)
+            game.play
+
+            # Assert
+            expect { game.play }.to output(/#{Regexp.quote("X wins!")}/).to_stdout
+        end
+    end
+
 end
 
 =begin

@@ -12,9 +12,9 @@ class Game
         @board = Board.new
         @player_one = Player.new('O')
         @player_two = Player.new('X')
-        @turn_counter = 0
         @display = Display.new
         @game_logic = GameLogic.new
+        @turn_counter = 0
         @game_over = false
     end
 
@@ -51,10 +51,8 @@ class Game
                 move(user_index, current_player) 
             else
                 @display.error_message
-                #take_turn
             end
         end
-        #@display.display_board(@board.grid)
     end
 
     def play
@@ -74,10 +72,3 @@ end
 
 #game = Game.new
 #game.play
-
-=begin
-To-do:
-- game_result method
-- make new classes
-
-=end
