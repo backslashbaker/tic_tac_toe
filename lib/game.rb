@@ -51,17 +51,17 @@ class Game
                 move(user_index, current_player) 
             else
                 @display.error_message
-                take_turn
+                #take_turn
             end
         end
-        @display.display_board(@board.grid)
+        #@display.display_board(@board.grid)
     end
 
     def play
         @display.welcome_message
-        @display.display_board(@board.grid)
         loop do
             until @board.full? or @game_logic.win?(@board) or @game_over
+                @display.display_board(@board.grid)
                 take_turn
             end
             break
@@ -72,8 +72,8 @@ class Game
 
 end
 
-#game = Game.new
-#game.play
+game = Game.new
+game.play
 
 =begin
 To-do:

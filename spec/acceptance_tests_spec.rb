@@ -59,12 +59,38 @@ describe "Tic-Tac-Toe" do
             expect { game.take_turn }.to output(/#{Regexp.quote("Thanks for playing, see you next time!")}/).to_stdout
         end
     end
+
+    context "when the user makes a move" do
+        it "it is displayed on the board" do
+            #Arrange
+            game = Game.new
+
+            #Act
+            allow($stdin).to receive(:gets).and_return("1")
+            game.take_turn
+
+            #Assert
+            expect(game.board.grid).to eq(["O", 2, 3, 4, 5, 6, 7, 8, 9])
+        end
+    end
+
+    context "when the user makes an incorrect move" do
+        it "displays an error message" do
+            # Arrange
+            game = Game.new
+
+            # Act
+            allow($stdin).to receive(:gets).and_return("blah")
+            game.take_turn
+
+            # Assert
+            expect { game.take_turn }.to output(/#{Regexp.quote("Input error. Try again.\n")}/).to_stdout
+        end
+    end
+
 end
 
 =begin
-- when the user types q or quit, they see "game over"
-- when the user makes a move, it is displayed on the board
-- when the user makes an incorrect move, an error message is displayed
 - when the user makes an illegal move, an error message is displayed
 - when a player wins, a win message is displayed
 - when we have a draw, a draw message is displayed
