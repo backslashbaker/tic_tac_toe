@@ -32,13 +32,27 @@ describe "Tic-Tac-Toe" do
         end
     end
 
-    context "when the user types 'q' or 'quit'" do
+    context "when the user types 'quit'" do
         it "displays a 'game over' message" do
             # Arrange
             game = Game.new
 
             # Act
             allow($stdin).to receive(:gets).and_return("quit")
+            game.play
+
+            # Assert
+            expect { game.take_turn }.to output(/#{Regexp.quote("Thanks for playing, see you next time!")}/).to_stdout
+        end
+    end
+
+    context "when the user types 'q'" do
+        it "displays a 'game over' message" do
+            # Arrange
+            game = Game.new
+
+            # Act
+            allow($stdin).to receive(:gets).and_return("q")
             game.play
 
             # Assert

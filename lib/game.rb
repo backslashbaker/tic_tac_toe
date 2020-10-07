@@ -42,7 +42,7 @@ class Game
     def take_turn
         @display.request_index
         user_index = $stdin.gets
-        if user_index == "quit"
+        if ["q", "quit"].include?(user_index)
             @game_over = true
             @display.game_over
         else
