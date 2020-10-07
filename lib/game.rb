@@ -40,14 +40,13 @@ class Game
 
     def take_turn
         @display.request_index
-        user_index = gets
-        p "hello #{user_index}"
+        user_index = $stdin.gets
         user_index = user_index.to_i - 1
         if @game_logic.valid_move?(@board, user_index)
             move(user_index, current_player)
         else
             @display.error_message
-            #take_turn
+            take_turn
         end
         @display.display_board(@board.grid)
     end
