@@ -27,8 +27,6 @@ describe Board do
         end
     end
 
-    
-
     context "checking if board is full" do
         it "returns true if board is full" do
             board = Board.new
@@ -53,6 +51,14 @@ describe Board do
         end
     end
 
-    
+    context "starting a new game" do
+        it "clears the board" do
+            board = Board.new
+            board.update_grid(0, 'O')
 
+            board.clear
+
+            expect(board.grid).to eq([1, 2, 3, 4, 5, 6, 7, 8, 9])
+        end
+    end 
 end

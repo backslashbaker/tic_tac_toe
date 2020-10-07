@@ -33,6 +33,10 @@ class Display
     def play_again
         print "Would you like to play again? (Y / N): "
     end
+
+    def new_game
+        print "New game\n\n"
+    end
 end
 
 =begin

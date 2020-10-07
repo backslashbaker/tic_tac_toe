@@ -68,26 +68,28 @@ class Game
         if @game_logic.game_result(@board, previous_player) == nil
             @display.draw_message
             @display.display_board(@board.grid)
-
         else
             @display.game_result_message(previous_player)
             @display.display_board(@board.grid)
-
         end
         #@display.game_result_message(previous_player)
     end
 
     def run
         running = true
-        play
-        @display.play_again
-        play_again = $stdin.gets
-        
-        if play_again == "Y"
+        while running
             play
-        else
-            running = false
-            @display.game_over
+            @display.play_again
+            user_choice = $stdin.gets.chomp
+            if user_choice == "Y"
+                @board.clear
+                #@turn_counter = 0
+                @display.new_game
+                run
+            else
+                running = false
+                @display.game_over
+            end
         end
     end
 

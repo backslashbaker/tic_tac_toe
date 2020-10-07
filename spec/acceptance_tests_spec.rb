@@ -149,7 +149,7 @@ describe "Tic-Tac-Toe" do
         it "allows users to play again" do
             game = Game.new
 
-            allow($stdin).to receive(:gets).and_return(9, 1, 2, 3, 5, 4, 6, 8, 7)
+            allow($stdin).to receive(:gets).and_return(9, 1, 2, 3, 5, 4, 6, 8, 7, "N")
             game.run
 
             expect { game.run }.to output(/#{Regexp.quote("Would you like to play again? (Y \/ N):")}/).to_stdout

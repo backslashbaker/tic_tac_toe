@@ -83,4 +83,12 @@ describe Display do
             expect { display.play_again }.to output("Would you like to play again? (Y \/ N): ").to_stdout
         end
     end
+
+    context "when game has ended" do
+        it "displays a new game message" do
+            display = Display.new
+
+            expect { display.new_game}.to output("New game\n\n").to_stdout
+        end
+    end
 end
