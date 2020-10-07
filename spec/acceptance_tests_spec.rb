@@ -88,10 +88,38 @@ describe "Tic-Tac-Toe" do
         end
     end
 
+
+    context "when the user makes an incorrect move" do
+        it "displays an error message" do
+            # Arrange
+            game = Game.new
+
+            # Act
+            allow($stdin).to receive(:gets).and_return("1", "1")
+            game.take_turn
+
+            # Assert
+            expect { game.take_turn }.to output(/#{Regexp.quote("Input error. Try again.\n")}/).to_stdout
+        end
+    end
+
+    context "when a player wins" do
+        it "displays a win message" do
+            # Arrange
+            game = Game.new
+
+            # Act 
+            allow($stdin).to receive(:gets).and_return(1, 5, 2, 8, 3)
+            game.play
+
+            # Assert
+            expect { game.play }.to output(/#{Regexp.quote("O wins!")}/).to_stdout
+        end
+    end
+
 end
 
 =begin
-- when the user makes an illegal move, an error message is displayed
 - when a player wins, a win message is displayed
 - when we have a draw, a draw message is displayed
 =end

@@ -66,14 +66,14 @@ class Game
             end
             break
         end
-        #@display.player_wins_message
+        @display.game_result_message(previous_player)
         @display.display_board(@board.grid)
     end
 
 end
 
-game = Game.new
-game.play
+#game = Game.new
+#game.play
 
 =begin
 To-do:
