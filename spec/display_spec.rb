@@ -72,8 +72,15 @@ describe Display do
         it "displays a draw message" do
             display = Display.new
 
-            expect { display.draw_message }.to output("Game has ended as a draw.").to_stdout
+            expect { display.draw_message }.to output("Game has ended as a draw.\n\n").to_stdout
         end
     end
        
+    context "when game has ended" do
+        it "displays a play again message" do
+            display = Display.new
+
+            expect { display.play_again }.to output("Would you like to play again? (Y \/ N): ").to_stdout
+        end
+    end
 end

@@ -77,8 +77,22 @@ class Game
         #@display.game_result_message(previous_player)
     end
 
+    def run
+        running = true
+        play
+        @display.play_again
+        play_again = $stdin.gets
+        
+        if play_again == "Y"
+            play
+        else
+            running = false
+            @display.game_over
+        end
+    end
+
 end
 
-# game = Game.new
-# game.play
+#  game = Game.new
+#  game.run
 

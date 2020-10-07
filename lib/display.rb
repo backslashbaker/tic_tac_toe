@@ -27,7 +27,11 @@ class Display
     end
 
     def draw_message
-        print "Game has ended as a draw."
+        print "Game has ended as a draw.\n\n"
+    end
+
+    def play_again
+        print "Would you like to play again? (Y / N): "
     end
 end
 

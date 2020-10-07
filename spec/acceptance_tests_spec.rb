@@ -145,9 +145,19 @@ describe "Tic-Tac-Toe" do
         end
     end
 
+    context "when the game ends" do
+        it "allows users to play again" do
+            game = Game.new
+
+            allow($stdin).to receive(:gets).and_return(9, 1, 2, 3, 5, 4, 6, 8, 7)
+            game.run
+
+            expect { game.run }.to output(/#{Regexp.quote("Would you like to play again? (Y \/ N):")}/).to_stdout
+        end
+    end
+
 end
 
 =begin
-- when we have a draw, a draw message is displayed
 - when the game ends, a play again message is displayed
 =end
