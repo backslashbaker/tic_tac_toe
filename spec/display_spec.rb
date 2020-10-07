@@ -59,5 +59,13 @@ describe Display do
             expect { display.game_result_message(player_one) }.to output("O wins!").to_stdout
         end
     end
+
+    context "When user quits" do
+        it "displays a game over message" do
+            display = Display.new
+
+            expect { display.game_over }.to output("Thanks for playing, see you next time!").to_stdout
+        end
+    end
        
 end

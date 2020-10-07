@@ -15,6 +15,7 @@ class Game
         @turn_counter = 0
         @display = Display.new
         @game_logic = GameLogic.new
+        @game_over = false
     end
 
     def move(index, player)
@@ -41,12 +42,17 @@ class Game
     def take_turn
         @display.request_index
         user_index = $stdin.gets
-        user_index = user_index.to_i - 1
-        if @game_logic.valid_move?(@board, user_index)
-            move(user_index, current_player)
+        if user_index == "quit"
+            @game_over = true
+            @display.game_over
         else
-            @display.error_message
-            take_turn
+            user_index = user_index.to_i - 1
+            if @game_logic.valid_move?(@board, user_index)
+                move(user_index, current_player) 
+            else
+                @display.error_message
+                take_turn
+            end
         end
         @display.display_board(@board.grid)
     end
@@ -55,7 +61,7 @@ class Game
         @display.welcome_message
         @display.display_board(@board.grid)
         loop do
-            until @board.full? or @game_logic.win?(@board)
+            until @board.full? or @game_logic.win?(@board) or @game_over
                 take_turn
             end
             break

@@ -21,6 +21,10 @@ class Display
     def game_result_message(player)
         print "#{player.marker} wins!"
     end
+
+    def game_over
+        print "Thanks for playing, see you next time!"
+    end
 end
 
 =begin
