@@ -47,7 +47,7 @@ describe Display do
             display = Display.new
             player_two = Player.new("X")
 
-            expect { display.game_result_message(player_two) }.to output("X wins!").to_stdout
+            expect { display.game_result_message(player_two) }.to output("X wins!\n\n").to_stdout
         end
     end
 
@@ -56,7 +56,7 @@ describe Display do
             display = Display.new
             player_one = Player.new("O")
 
-            expect { display.game_result_message(player_one) }.to output("O wins!").to_stdout
+            expect { display.game_result_message(player_one) }.to output("O wins!\n\n").to_stdout
         end
     end
 
@@ -65,6 +65,14 @@ describe Display do
             display = Display.new
 
             expect { display.game_over }.to output("Thanks for playing, see you next time!").to_stdout
+        end
+    end
+
+    context "when the game is a draw" do
+        it "displays a draw message" do
+            display = Display.new
+
+            expect { display.draw_message }.to output("Game has ended as a draw.").to_stdout
         end
     end
        

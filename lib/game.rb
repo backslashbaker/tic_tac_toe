@@ -61,14 +61,24 @@ class Game
             until @board.full? or @game_logic.win?(@board) or @game_over
                 @display.display_board(@board.grid)
                 take_turn
+                puts ""
             end
             break
         end
-        @display.game_result_message(previous_player)
-        @display.display_board(@board.grid)
+        if @game_logic.game_result(@board, previous_player) == nil
+            @display.draw_message
+            @display.display_board(@board.grid)
+
+        else
+            @display.game_result_message(previous_player)
+            @display.display_board(@board.grid)
+
+        end
+        #@display.game_result_message(previous_player)
     end
 
 end
 
-#game = Game.new
-#game.play
+# game = Game.new
+# game.play
+

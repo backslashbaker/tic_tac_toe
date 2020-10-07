@@ -131,9 +131,23 @@ describe "Tic-Tac-Toe" do
         end
     end
 
+    context "when there is a draw" do
+        it "displays a draw message" do
+            # Arrange
+            game = Game.new
+
+            # Act
+            allow($stdin).to receive(:gets).and_return(9, 1, 2, 3, 5, 4, 6, 8, 7)
+            game.play
+
+            # Assert
+            expect { game.play }.to output(/#{Regexp.quote("Game has ended as a draw.")}/).to_stdout
+        end
+    end
+
 end
 
 =begin
-- when a player wins, a win message is displayed
 - when we have a draw, a draw message is displayed
+- when the game ends, a play again message is displayed
 =end

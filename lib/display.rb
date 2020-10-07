@@ -19,11 +19,15 @@ class Display
     end
 
     def game_result_message(player)
-        print "#{player.marker} wins!"
+        print "#{player.marker} wins!\n\n"
     end
 
     def game_over
         print "Thanks for playing, see you next time!"
+    end
+
+    def draw_message
+        print "Game has ended as a draw."
     end
 end
 
