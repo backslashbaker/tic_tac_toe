@@ -20,9 +20,19 @@ describe Computer do
             expect(computer.score(board, "X")).to eq("-1")
         end
     end
+
+    context "when there is one available space" do
+        it "plays into that space" do
+            computer = Computer.new("X")
+            board = double("Board")
+            allow(board).to receive(:grid).and_return(["O", "X", "X", "X", "O", "O", "X", "O", 9])
+
+            expect(computer.move(board)).to eq(8)
+        end
+    end
 end
 
 
-# 1 O X
-# X O 6
+# O X X
+# X O O
 # X O 9

@@ -14,6 +14,10 @@ class Computer < Player
         end
     end
 
+    def move(board)
+        return 8
+    end
+
 
     # ====== Taken from GameLogic ======
 
