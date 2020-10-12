@@ -3,6 +3,7 @@ require_relative 'player'
 require_relative 'human'
 require_relative 'display'
 require_relative 'game_logic'
+require_relative 'computer'
 
 class Game
 
