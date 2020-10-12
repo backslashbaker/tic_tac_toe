@@ -42,7 +42,7 @@ describe "Tic-Tac-Toe" do
             game.play
 
             # Assert
-            expect { game.take_turn }.to output(/#{Regexp.quote("Thanks for playing, see you next time!")}/).to_stdout
+            expect { game.play }.to output(/#{Regexp.quote("Thanks for playing, see you next time!")}/).to_stdout
         end
     end
 
@@ -56,7 +56,7 @@ describe "Tic-Tac-Toe" do
             game.play
 
             # Assert
-            expect { game.take_turn }.to output(/#{Regexp.quote("Thanks for playing, see you next time!")}/).to_stdout
+            expect { game.play }.to output(/#{Regexp.quote("Thanks for playing, see you next time!")}/).to_stdout
         end
     end
 
