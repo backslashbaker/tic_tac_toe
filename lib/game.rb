@@ -9,10 +9,10 @@ class Game
     attr_accessor :board, :turn_counter
     attr_reader :player_one, :player_two, :display, :game_logic
 
-    def initialize
+    def initialize(player_one, player_two)
         @board = Board.new
-        @player_one = Human.new('O')
-        @player_two = Human.new('X')
+        @player_one = player_one
+        @player_two = player_two
         @display = Display.new
         @game_logic = GameLogic.new
         @turn_counter = 0
