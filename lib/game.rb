@@ -1,5 +1,6 @@
 require_relative 'board'
 require_relative 'player'
+require_relative 'human'
 require_relative 'display'
 require_relative 'game_logic'
 
@@ -10,8 +11,8 @@ class Game
 
     def initialize
         @board = Board.new
-        @player_one = Player.new('O')
-        @player_two = Player.new('X')
+        @player_one = Human.new('O')
+        @player_two = Human.new('X')
         @display = Display.new
         @game_logic = GameLogic.new
         @turn_counter = 0
