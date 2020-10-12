@@ -42,9 +42,8 @@ class Game
     def take_turn
         @display.request_index
         user_index = $stdin.gets
-        if ["q", "quit"].include?(user_index)
+        if user_index.to_s.chomp == "q" or user_index.to_s.chomp == "quit"
             @game_over = true
-            @display.game_over
         else
             user_index = user_index.to_i - 1
             if @game_logic.valid_move?(@board, user_index)
@@ -65,36 +64,37 @@ class Game
             end
             break
         end
-        if @game_logic.game_result(@board, previous_player) == nil
+        if @game_over
+            @display.game_over
+        elsif @game_logic.game_result(@board, previous_player) == nil
             @display.draw_message
             @display.display_board(@board.grid)
         else
             @display.game_result_message(previous_player)
             @display.display_board(@board.grid)
         end
-        #@display.game_result_message(previous_player)
     end
 
-    def run
-        running = true
-        while running
-            play
-            @display.play_again
-            user_choice = $stdin.gets.chomp
-            if user_choice == "Y"
-                @board.clear
-                #@turn_counter = 0
-                @display.new_game
-                run
-            else
-                running = false
-                @display.game_over
-            end
-        end
-    end
+    # def run
+    #     running = true
+    #     while running
+    #         play
+    #         @display.play_again
+    #         user_choice = $stdin.gets.chomp
+    #         if user_choice == "Y"
+    #             @board.clear
+    #             #@turn_counter = 0
+    #             @display.new_game
+    #             run
+    #         else
+    #             running = false
+    #             @display.game_over
+    #         end
+    #     end
+    # end
 
 end
 
-#  game = Game.new
-#  game.run
+game = Game.new
+game.play
 

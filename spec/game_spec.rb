@@ -47,15 +47,15 @@ describe Game do
         end
     end
 
-    context "when the user types 'yes' at the end of the game" do
-        it "plays the game again" do
-            game = Game.new
+    # context "when the user types 'yes' at the end of the game" do
+    #     it "plays the game again" do
+    #         game = Game.new
 
-            allow($stdin).to receive(:gets).and_return("1", "2", "5", "3", "9", "Y", "quit")
-            game.run
+    #         allow($stdin).to receive(:gets).and_return("1", "2", "5", "3", "9", "Y", "quit")
+    #         game.run
 
-            expect{ game.run }.to output(/#{Regexp.quote("New game\n\n")}/).to_stdout
-        end
-    end
+    #         expect{ game.run }.to output(/#{Regexp.quote("New game\n\n")}/).to_stdout
+    #     end
+    # end
 
 end
