@@ -6,11 +6,15 @@ class Computer < Player
         @marker = marker
     end
 
-    def score(board, marker)
+    def score(board, marker, human_marker)
         if three_in_a_row?(board, marker)
             return "1"
-        else
+        elsif three_in_a_row?(board, human_marker)
             return "-1"
+        elsif board_full?(board)
+            return "0"
+        else
+            nil
         end
     end
 
@@ -43,27 +47,36 @@ class Computer < Player
         return false
     end
 
-    def draw?(board)
-        if board.full? && !win?(board)
-            return true
-        end
-        return false
-    end
-
-    def game_result(board, player)
-        if win?(board)
-            return player
+    def board_full?(board)
+        if board.grid.any?(Integer)
+            false
         else
-            return nil
+            true
         end
     end
 
-    private 
+#     def draw?(board)
+#         if board.full? && !win?(board)
+#             return true
+#         end
+#         return false
+#     end
 
-    def empty?(board, index)
-        if board.grid[index].is_a?(Integer)
-            return true
-        end
-        return false
-    end
+
+#     def game_result(board, player)
+#         if win?(board)
+#             return player
+#         else
+#             return nil
+#         end
+#     end
+
+#     private 
+
+#     def empty?(board, index)
+#         if board.grid[index].is_a?(Integer)
+#             return true
+#         end
+#         return false
+#     end
 end
