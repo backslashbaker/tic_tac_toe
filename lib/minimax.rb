@@ -10,6 +10,12 @@ class Minimax
         end
     end
 
+    def get_best_move(board, marker)
+        if game_over?(board, marker)
+            0
+        end
+    end
+
     private
 
     def multiplier(comp = true)
@@ -48,5 +54,21 @@ class Minimax
             end
         }
         return false
+    end
+
+    def board_full?(board)
+        if board.grid.any?(Integer)
+            false
+        else
+            true
+        end
+    end
+
+    def game_over?(board, marker)
+        if three_in_a_row?(board, marker) or three_in_a_row?(board, opponent(marker)) or board_full?(board)
+            return true
+        else
+            return false
+        end
     end
 end

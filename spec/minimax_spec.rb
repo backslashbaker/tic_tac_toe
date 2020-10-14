@@ -45,4 +45,16 @@ describe Minimax do
             expect(minimax.score(board, HUMAN, false)).to eq(-1)
         end
     end
+
+    context "When the game is over" do
+        it "Scores the board when the board is drawn" do
+            minimax = Minimax.new
+            board = double("Board")
+            allow(board).to receive(:grid).and_return(["O", "X", "X",
+                                                       "X", "O", "O",
+                                                       "X", "O", "X"])
+            
+            expect(minimax.get_best_move(board, COMPUTER)).to eq(0)
+        end
+    end
 end
