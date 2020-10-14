@@ -1,5 +1,24 @@
 class Minimax
 
+    def minimax(board, empty_spaces_array, marker)
+        if game_over
+            end_game
+        else 
+            empty_spaces_array.each { |space|
+                board_copy = board.clone
+                if score(board_copy, space, marker) == 1
+                    scores_hash[space] = 1
+                    break
+                end
+
+            }
+        end
+    end
+
+    def empty_spaces(board)
+        return empty_spaces_array
+    end
+
     def score(board, index, marker)
         updated_board = new_board(board, index, marker)
         if three_in_a_row?(updated_board, marker)
