@@ -9,7 +9,7 @@ class Computer < Player
     def move(board)
         index = 0
         while !found do
-            if minimax.score(board, empty_spaces[index], COMPUTER) == 1
+            if minimax.score(board, empty_spaces[index], @marker) == 1
                 found = true
             end
             index += 1

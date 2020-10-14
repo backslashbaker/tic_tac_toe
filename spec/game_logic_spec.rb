@@ -90,7 +90,7 @@ describe GameLogic do
 
     context "when a player has won" do
         it "returns the name of the player who has won" do
-            game = Game.new(Human.new("O"), Human.new("X"))
+            game = Game.new(Human.new, Computer.new)
 
             allow($stdin).to receive(:gets).and_return(6, 1, 4, 5, 2, 9)
             game.play
@@ -101,7 +101,7 @@ describe GameLogic do
 
     context "when another player has won" do
         it "returns the name of the other player" do
-            game = Game.new(Human.new("O"), Human.new("X"))
+            game = Game.new(Human.new, Computer.new)
 
             allow($stdin).to receive(:gets).and_return(1, 4, 5, 2, 9)
             game.play
@@ -112,7 +112,7 @@ describe GameLogic do
 
     context "when we have a draw" do
         it "returns nil" do
-            game = Game.new(Human.new("O"), Human.new("X"))
+            game = Game.new(Human.new, Computer.new)
 
             allow($stdin).to receive(:gets).and_return(9, 1, 2, 3, 5, 4, 6, 8, 7)
             game.play
