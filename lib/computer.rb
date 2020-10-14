@@ -1,7 +1,10 @@
 class Computer < Player
 
-    COMPUTER = "X"
-    HUMAN = "O"
+    attr_reader :marker
+
+    def initialize
+        @marker = "X"
+    end
 
     def move(board)
         index = 0
