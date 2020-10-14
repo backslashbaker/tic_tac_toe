@@ -41,7 +41,7 @@ class Game
 
     def take_turn
         @display.request_index
-        user_index = $stdin.gets
+        user_index = $stdin.gets.chomp
         if ["q", "quit"].include?(user_index)
             @game_over = true
             @display.game_over
@@ -95,6 +95,6 @@ class Game
 
 end
 
-#  game = Game.new
-#  game.run
+ game = Game.new
+ game.run
 
