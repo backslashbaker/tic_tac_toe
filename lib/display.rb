@@ -1,5 +1,3 @@
-require_relative 'board'
-
 class Display
 
     def welcome_message 
