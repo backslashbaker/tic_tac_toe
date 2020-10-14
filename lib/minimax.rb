@@ -10,10 +10,26 @@ class Minimax
         end
     end
 
-    def get_best_move(board, marker)
+    def minimax(board, marker)
         if game_over?(board, marker)
-            0
+            return 0
+        else
+            scores_hash = {}
+            empty_spaces_array = empty_spaces(board)
+            empty_spaces_array.each { |space| 
+
+                new_board = board.clone
+                new_board.grid[space] = marker
+                score = 1 #minimax(new_board, opponent(marker))
+                scores_hash[space] = score
+            
+            }
+            return scores_hash.first[0] - 1
         end
+    end
+
+    def empty_spaces(board)
+        board.grid.select { |space| space.is_a?(Integer) }
     end
 
     private
@@ -71,4 +87,6 @@ class Minimax
             return false
         end
     end
+
+   
 end

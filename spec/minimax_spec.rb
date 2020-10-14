@@ -47,14 +47,26 @@ describe Minimax do
     end
 
     context "When the game is over" do
-        it "Scores the board when the board is drawn" do
+        it "returns the index of the best move for X to win" do
             minimax = Minimax.new
             board = double("Board")
-            allow(board).to receive(:grid).and_return(["O", "X", "X",
-                                                       "X", "O", "O",
-                                                       "X", "O", "X"])
+            allow(board).to receive(:grid).and_return(["X", "O", "O",
+                                                       "O", "X", "X",
+                                                       "O", "X", 9])
             
-            expect(minimax.get_best_move(board, COMPUTER)).to eq(0)
+            expect(minimax.minimax(board, COMPUTER)).to eq(8)
+        end
+    end
+
+    context "empty spaces" do
+        it "returns 9 as only empty space" do
+            minimax = Minimax.new
+            board = double("Board")
+            allow(board).to receive(:grid).and_return(["X", "O", "O",
+                                                       "O", "X", "X",
+                                                       "O", "X", 9])
+            
+            expect(minimax.empty_spaces(board)).to eq([9])
         end
     end
 end

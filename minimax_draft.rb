@@ -10,13 +10,14 @@ class Minimax
         if game_over
             return score(board, player_marker) # score from perspective of the player
         else 
+            scores_hash = {}
             empty_spaces_array = empty_spaces(board) #iterate over each possible move based on current state of board
             empty_spaces_array.each { |space|
                 
                 new_board = board.clone
                 new_board[space] = player_marker # create a state reflecting the board as it looks after the move is made
-                minimax(new_board, opponent_marker, player_marker) # call minimax on new state to see if game over position has been reached
-                # add this board state to a hash with its score?
+                score = minimax(new_board, opponent_marker, player_marker) # call minimax on new state to see if game over position has been reached
+                scores_hash[space] = score # add this board state to a hash with its score?
 
                 # if not game over, we iterate again over the empty spaces but now we are filling spaces with the opponents marker and calling minimax on the resulting state
                 # continue calling minimax until an end state is reached
