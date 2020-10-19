@@ -41,7 +41,7 @@ class Game
         end
     end
 
-    def take_turn
+    def human_take_turn
         @display.request_index
         user_index = $stdin.gets
         if user_index.to_s.chomp == "q" or user_index.to_s.chomp == "quit"
@@ -61,7 +61,7 @@ class Game
         loop do
             until @board.full? or @game_logic.win?(@board) or @game_over
                 @display.display_board(@board.grid)
-                take_turn
+                human_take_turn
                 puts ""
             end
             break

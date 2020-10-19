@@ -5,7 +5,6 @@ require_relative '../lib/game_logic'
 
 describe "Tic-Tac-Toe" do
 
-
     context "when beginning a new game" do
         it "displays an empty board to the user" do
             # Arrange
@@ -67,7 +66,7 @@ describe "Tic-Tac-Toe" do
 
             #Act
             allow($stdin).to receive(:gets).and_return("1")
-            game.take_turn
+            game.human_take_turn
 
             #Assert
             expect(game.board.grid).to eq(["O", 2, 3, 4, 5, 6, 7, 8, 9])
@@ -81,10 +80,10 @@ describe "Tic-Tac-Toe" do
 
             # Act
             allow($stdin).to receive(:gets).and_return("blah")
-            game.take_turn
+            game.human_take_turn
 
             # Assert
-            expect { game.take_turn }.to output(/#{Regexp.quote("Input error. Try again.\n")}/).to_stdout
+            expect { game.human_take_turn }.to output(/#{Regexp.quote("Input error. Try again.\n")}/).to_stdout
         end
     end
 
@@ -96,10 +95,10 @@ describe "Tic-Tac-Toe" do
 
             # Act
             allow($stdin).to receive(:gets).and_return("1", "1")
-            game.take_turn
+            game.human_take_turn
 
             # Assert
-            expect { game.take_turn }.to output(/#{Regexp.quote("Input error. Try again.\n")}/).to_stdout
+            expect { game.human_take_turn }.to output(/#{Regexp.quote("Input error. Try again.\n")}/).to_stdout
         end
     end
 
