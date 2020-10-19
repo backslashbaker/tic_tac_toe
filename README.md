@@ -1,11 +1,12 @@
 # Tic Tac Toe
 
 ## To-Do list
-- change `take_turn` method to `human_take_turn` in game file
-- change `move` function to `current_player.move`
-- add in `if current_player.is_a?(Human)` after `until` statement in `play` function 
-- add a `move` function for Player (and tests)
-- tests will fail - swap X's & O's and initalise with two Humans and overwrite player one's marker?
+- [x] change `take_turn` method to `human_take_turn` in game file
+- [x] change `move` function to `current_player.move`
+- [x] add in `if current_player.is_a?(Human)` after `until` statement in `play` function 
+- [x] add a `move` function for Player (and tests)
+- [x] tests will fail - swap X's & O's and initalise with two Humans and overwrite player one's marker?
+- [ ] create `computer_take_turn` method in game
 
 ## MoSCoW
 
