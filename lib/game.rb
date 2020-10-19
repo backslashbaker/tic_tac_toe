@@ -20,11 +20,6 @@ class Game
         @game_over = false
     end
 
-    def move(index, player)
-        @board.update_grid(index, player.marker)
-        @turn_counter += 1
-    end
-
     def current_player
         if @turn_counter.even?
             @player_one
@@ -49,7 +44,7 @@ class Game
         else
             user_index = user_index.to_i - 1
             if @game_logic.valid_move?(@board, user_index)
-                move(user_index, current_player) 
+                current_player.move(user_index, @board)
             else
                 @display.error_message
             end
@@ -60,9 +55,16 @@ class Game
         @display.welcome_message
         loop do
             until @board.full? or @game_logic.win?(@board) or @game_over
-                @display.display_board(@board.grid)
-                human_take_turn
-                puts ""
+                if current_player.is_a?(Human)
+                    @display.display_board(@board.grid)
+                    human_take_turn
+                    @turn_counter += 1
+                    puts ""
+                else
+                    index = current_player.minimax.minimax(@board, current_player.marker)
+                    current_player.move(index, board)
+                    @turn_counter += 1
+                end             
             end
             break
         end
