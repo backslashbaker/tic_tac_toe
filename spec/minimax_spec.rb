@@ -118,5 +118,9 @@ describe Minimax do
             
             expect(minimax.minimax(board, COMPUTER)).to eq(7)
         end
+
+        # 3 available space test
+        # no win but draw test 
+        # 3 depth level qualifier 
     end
 end
