@@ -4,24 +4,22 @@
 
 ### Must
 - implement minimax
-- create Human and Computer subclasses of Player
 - inject dependencies into Game initialisation
 
 ### Should 
 - request Human v Human, or Human v Computer
 
 ### Could 
-- request markers
 - use colour on empty cells
 - ask to play again
 - Display current player
 
 ### Won't
-
+- request markers
 
 ## Minimax
 
-### How the algorith works:
+### How the algorithm works:
 
 - If the game is over, return the score from computer's perspective (+/- 1).
 - Otherwise, get a list of new game states for every possible move.
