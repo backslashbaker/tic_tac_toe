@@ -96,7 +96,3 @@ class Game
     # end
 
 end
-
-# game = Game.new
-# game.play
-
