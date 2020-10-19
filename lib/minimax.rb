@@ -10,21 +10,29 @@ class Minimax
         end
     end
 
-    def minimax(board, marker)
+    def minimax(board, marker, depth= 0)
         if game_over?(board, marker)
             return score(board, marker)
         else
             scores_hash = {}
             empty_spaces_array = empty_spaces(board)
-            new_board = board.clone
+            p empty_spaces_array
             empty_spaces_array.each { |space| 
+
+                p "Now looking at space #{space} with depth #{depth}"
                 
+                new_board = board.clone
                 new_board.grid[space - 1] = marker
-                score = minimax(new_board, opponent(marker))
+                score = minimax(new_board, opponent(marker), depth+1)
+                p "Space: #{space} score: #{score}"
                 scores_hash[space] = score
+                p "New scores hash is #{scores_hash}"
             
             }
-            return scores_hash.first[0] - 1
+            p "Left each loop"
+            p "Scores hash is #{scores_hash}"
+            p scores_hash.max_by { |key, value| value }
+            evaluate_score(depth, scores_hash)
         end
     end
 
@@ -33,6 +41,14 @@ class Minimax
     end
 
     private
+
+    def evaluate_score(depth, scores_hash)
+        if depth == 0 
+            return scores_hash.max_by { |key, value| value }[0] - 1
+        else
+            return scores_hash.max_by { |key, value| value }[1]
+        end
+    end
 
     def multiplier(marker)
         if marker == "X" 
