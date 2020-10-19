@@ -1,13 +1,19 @@
 # Tic Tac Toe
 
 ## To-Do list
+- change `take_turn` method to `human_take_turn` in game file
+- change `move` function to `current_player.move`
+- add in `if current_player.is_a?(Human)` after `until` statement in `play` function 
+- add a `move` function for Player (and tests)
+- tests will fail - swap X's & O's and initalise with two Humans and overwrite player one's marker?
+
+## MoSCoW
 
 ### Must
 - implement minimax
-- inject dependencies into Game initialisation
+- have Computer start the game
 
 ### Should 
-- request Human v Human, or Human v Computer
 
 ### Could 
 - use colour on empty cells
@@ -16,6 +22,7 @@
 
 ### Won't
 - request markers
+- request Human v Human, or Human v Computer
 
 ## Minimax
 
