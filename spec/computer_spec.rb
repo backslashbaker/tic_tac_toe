@@ -11,7 +11,3 @@ describe Computer do
         end
     end
 end
-
-# O X X
-# X O O
-# X O 9

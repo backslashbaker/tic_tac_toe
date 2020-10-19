@@ -5,7 +5,7 @@ HUMAN = "O"
 
 describe Minimax do
     context "#score function" do
-        it "calculates the score for a move when X will win" do
+        it "calculates the score for a move when X wins" do
             minimax = Minimax.new
             board = double("Board")
             allow(board).to receive(:grid).and_return(["X", "O", 3,
@@ -13,6 +13,19 @@ describe Minimax do
                                                       "O", 8, "X"])
 
             expect(minimax.score(board, COMPUTER)).to eq(1)
+        end
+
+        context "#score function" do
+            it "calculates the score when X wins and board is full" do
+                minimax= Minimax.new
+                board = double("Board")
+                allow(board).to receive(:grid).and_return(["X", "O", "O",
+                                                           "O", "X", "X",
+                                                           "O", "X", "X"])
+                            
+                                                
+                expect(minimax.minimax(board, COMPUTER)).to eq(1)
+            end
         end
 
         it "calculates the score for each move when O wins" do
@@ -42,7 +55,7 @@ describe Minimax do
                                                        "X", "O", 6,
                                                         7, "O", "O"])
 
-            expect(minimax.score(board, HUMAN, false)).to eq(-1)
+            expect(minimax.score(board, HUMAN)).to eq(-1)
         end
     end
 
@@ -55,6 +68,19 @@ describe Minimax do
                                                        "O", "X", 9])
             
             expect(minimax.minimax(board, COMPUTER)).to eq(8)
+        end
+    end
+
+    context "When the game is over" do
+        it "returns the correct score" do
+            minimax= Minimax.new
+            board = double("Board")
+            allow(board).to receive(:grid).and_return(["X", "O", "O",
+                                                       "O", "X", "X",
+                                                       "O", "X", "X"])
+                        
+                                            
+            expect(minimax.minimax(board, COMPUTER)).to eq(1)
         end
     end
 
