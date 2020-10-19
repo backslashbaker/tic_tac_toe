@@ -20,21 +20,23 @@ describe "Tic-Tac-Toe" do
     context "when beginning a game" do
         it "can play until a win" do
             # Arrange
-            game = Game.new(Human.new, Computer.new)
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
 
             # Act
             allow($stdin).to receive(:gets).and_return(1, 5, 2, 8, 3)
             game.play
 
             # Assert
-            expect(game.board.grid).to eq(["O", "O", "O", 4, "X", 6, 7, "X", 9])
+            expect(game.board.grid).to eq(["X", "X", "X", 4, "O", 6, 7, "O", 9])
         end
     end
 
     context "when the user types 'quit'" do
         it "displays a 'game over' message" do
             # Arrange
-            game = Game.new(Human.new, Computer.new)
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
 
             # Act
             allow($stdin).to receive(:gets).and_return("quit")
@@ -48,7 +50,8 @@ describe "Tic-Tac-Toe" do
     context "when the user types 'q'" do
         it "displays a 'game over' message" do
             # Arrange
-            game = Game.new(Human.new, Computer.new)
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
 
             # Act
             allow($stdin).to receive(:gets).and_return("q")
@@ -62,21 +65,23 @@ describe "Tic-Tac-Toe" do
     context "when the user makes a move" do
         it "it is displayed on the board" do
             #Arrange
-            game = Game.new(Human.new, Computer.new)
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
 
             #Act
             allow($stdin).to receive(:gets).and_return("1")
             game.human_take_turn
 
             #Assert
-            expect(game.board.grid).to eq(["O", 2, 3, 4, 5, 6, 7, 8, 9])
+            expect(game.board.grid).to eq(["X", 2, 3, 4, 5, 6, 7, 8, 9])
         end
     end
 
     context "when the user makes an incorrect move" do
         it "displays an error message" do
             # Arrange
-            game = Game.new(Human.new, Computer.new)
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
 
             # Act
             allow($stdin).to receive(:gets).and_return("blah")
@@ -91,7 +96,8 @@ describe "Tic-Tac-Toe" do
     context "when the user makes an incorrect move" do
         it "displays an error message" do
             # Arrange
-            game = Game.new(Human.new, Computer.new)
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
 
             # Act
             allow($stdin).to receive(:gets).and_return("1", "1")
@@ -105,24 +111,11 @@ describe "Tic-Tac-Toe" do
     context "when a player wins" do
         it "displays a win message" do
             # Arrange
-            game = Game.new(Human.new, Computer.new)
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
 
             # Act 
             allow($stdin).to receive(:gets).and_return(1, 5, 2, 8, 3)
-            game.play
-
-            # Assert
-            expect { game.play }.to output(/#{Regexp.quote("O wins!")}/).to_stdout
-        end
-    end
-
-    context "when a player wins" do
-        it "displays a win message" do
-            # Arrange
-            game = Game.new(Human.new, Computer.new)
-
-            # Act 
-            allow($stdin).to receive(:gets).and_return(9, 1, 5, 2, 8, 3)
             game.play
 
             # Assert
@@ -130,10 +123,26 @@ describe "Tic-Tac-Toe" do
         end
     end
 
+    context "when a player wins" do
+        it "displays a win message" do
+            # Arrange
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
+
+            # Act 
+            allow($stdin).to receive(:gets).and_return(9, 1, 5, 2, 8, 3)
+            game.play
+
+            # Assert
+            expect { game.play }.to output(/#{Regexp.quote("O wins!")}/).to_stdout
+        end
+    end
+
     context "when there is a draw" do
         it "displays a draw message" do
             # Arrange
-            game = Game.new(Human.new, Computer.new)
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
 
             # Act
             allow($stdin).to receive(:gets).and_return(9, 1, 2, 3, 5, 4, 6, 8, 7)
@@ -143,16 +152,5 @@ describe "Tic-Tac-Toe" do
             expect { game.play }.to output(/#{Regexp.quote("Game has ended as a draw.")}/).to_stdout
         end
     end
-
-    # context "when the game ends" do
-    #     it "allows users to play again" do
-    #         game = Game.new
-
-    #         allow($stdin).to receive(:gets).and_return(9, 1, 2, 3, 5, 4, 6, 8, 7, "N")
-    #         game.run
-
-    #         expect { game.run }.to output(/#{Regexp.quote("Would you like to play again? (Y \/ N):")}/).to_stdout
-    #     end
-    # end
 
 end
