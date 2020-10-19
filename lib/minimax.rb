@@ -1,10 +1,10 @@
 class Minimax
 
-    def score(board, marker, comp = true)
+    def score(board, marker)
         if three_in_a_row?(board, marker)
-            return 1 * multiplier(comp)
+            return 1 * multiplier(marker)
         elsif three_in_a_row?(board, opponent(marker))
-            return -1 * multiplier(comp)
+            return -1 * multiplier(marker)
         else
             return 0
         end
@@ -12,15 +12,15 @@ class Minimax
 
     def minimax(board, marker)
         if game_over?(board, marker)
-            return 0
+            return score(board, marker)
         else
             scores_hash = {}
             empty_spaces_array = empty_spaces(board)
+            new_board = board.clone
             empty_spaces_array.each { |space| 
-
-                new_board = board.clone
-                new_board.grid[space] = marker
-                score = 1 #minimax(new_board, opponent(marker))
+                
+                new_board.grid[space - 1] = marker
+                score = minimax(new_board, opponent(marker))
                 scores_hash[space] = score
             
             }
@@ -34,8 +34,8 @@ class Minimax
 
     private
 
-    def multiplier(comp = true)
-        if comp 
+    def multiplier(marker)
+        if marker == "X" 
             1
         else
             -1
