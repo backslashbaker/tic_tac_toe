@@ -45,6 +45,7 @@ class Game
             user_index = user_index.to_i - 1
             if @game_logic.valid_move?(@board, user_index)
                 current_player.move(user_index, @board)
+                @turn_counter += 1
             else
                 @display.error_message
             end
@@ -58,7 +59,6 @@ class Game
                 if current_player.is_a?(Human)
                     @display.display_board(@board.grid)
                     human_take_turn
-                    @turn_counter += 1
                     puts ""
                 else
                     index = current_player.minimax.minimax(@board, current_player.marker)
