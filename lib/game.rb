@@ -20,21 +20,7 @@ class Game
         @game_over = false
     end
 
-    def current_player
-        if @turn_counter.even?
-            @player_one
-        else
-            @player_two
-        end
-    end
-
-    def previous_player
-        if turn_counter.odd?
-            @player_one
-        else
-            player_two
-        end
-    end
+   
 
     def human_take_turn
         @display.request_index
@@ -88,5 +74,23 @@ class Game
             @display.display_board(@board.grid)
         end
     end
-    
+
+    private
+
+    def current_player
+        if @turn_counter.even?
+            @player_one
+        else
+            @player_two
+        end
+    end
+
+    def previous_player
+        if turn_counter.odd?
+            @player_one
+        else
+            player_two
+        end
+    end
+
 end
