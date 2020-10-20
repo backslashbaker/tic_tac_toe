@@ -1,10 +1,12 @@
+require_relative 'board'
+
 class Minimax
 
     def score(board, marker)
         if three_in_a_row?(board, marker)
-            return 1 * multiplier(marker)
+            return 1
         elsif three_in_a_row?(board, opponent(marker))
-            return -1 * multiplier(marker)
+            return -1
         else
             return 0
         end
@@ -16,22 +18,15 @@ class Minimax
         else
             scores_hash = {}
             empty_spaces_array = empty_spaces(board)
-            p empty_spaces_array
             empty_spaces_array.each { |space| 
-
-                p "Now looking at space #{space} with depth #{depth}"
                 
-                new_board = board.clone
+                new_board = Board.new
+                new_board.grid = board.grid.map(&:dup)
                 new_board.grid[space - 1] = marker
-                score = minimax(new_board, opponent(marker), depth+1)
-                p "Space: #{space} score: #{score}"
+                score = -1 * minimax(new_board, opponent(marker), depth+1)
                 scores_hash[space] = score
-                p "New scores hash is #{scores_hash}"
             
             }
-            p "Left each loop"
-            p "Scores hash is #{scores_hash}"
-            p scores_hash.max_by { |key, value| value }
             evaluate_score(depth, scores_hash)
         end
     end
@@ -47,14 +42,6 @@ class Minimax
             return scores_hash.max_by { |key, value| value }[0] - 1
         else
             return scores_hash.max_by { |key, value| value }[1]
-        end
-    end
-
-    def multiplier(marker)
-        if marker == "X" 
-            1
-        else
-            -1
         end
     end
 
@@ -103,6 +90,5 @@ class Minimax
             return false
         end
     end
-
    
 end

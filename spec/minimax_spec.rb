@@ -47,16 +47,6 @@ describe Minimax do
 
             expect(minimax.score(board, COMPUTER)).to eq(0)
         end
-
-        it "calculates the score when O wins, but from X's perspective" do
-            minimax = Minimax.new
-            board = double("Board")
-            allow(board).to receive(:grid).and_return(["O", "X", "X",
-                                                       "X", "O", 6,
-                                                        7, "O", "O"])
-
-            expect(minimax.score(board, HUMAN)).to eq(-1)
-        end
     end
 
     context "When the game is over" do
@@ -108,7 +98,7 @@ describe Minimax do
         end
     end
 
-    context "When there is one space left" do
+    context "When there are two spaces left" do
         it "returns the index of the best move for X to win" do
             minimax = Minimax.new
             board = double("Board")
@@ -117,6 +107,30 @@ describe Minimax do
                                                       "O", 8, "O"])
             
             expect(minimax.minimax(board, COMPUTER)).to eq(7)
+        end
+
+        context "When there are three spaces left" do
+            it "returns the index of the best move for X to win" do
+                minimax = Minimax.new
+                board = double("Board")
+                allow(board).to receive(:grid).and_return([1, "X", "O",
+                                                           4, "X", "X",
+                                                           "O", 8, "O"])
+                
+                expect(minimax.minimax(board, COMPUTER)).to eq(3)
+            end
+        end
+
+        context "When there are three spaces left" do
+            it "returns the index of the best move for X to win in the future" do
+                minimax = Minimax.new
+                board = double("Board")
+                allow(board).to receive(:grid).and_return(["O", "X", 3,
+                                                           "X", "X", "O",
+                                                           7, "O", 9])
+                
+                expect(minimax.minimax(board, COMPUTER)).to eq(2)
+            end
         end
 
         # 3 available space test
