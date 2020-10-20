@@ -52,6 +52,18 @@ class Game
         end
     end
 
+    def computer_take_turn
+        if @turn_counter == 0
+            random_index = rand(0..8)
+            current_player.move(random_index, board)
+            @turn_counter += 1
+        else
+            index = current_player.minimax.minimax(@board, current_player.marker)
+            current_player.move(index, board)
+            @turn_counter += 1
+        end
+    end
+
     def play
         @display.welcome_message
         loop do
@@ -61,9 +73,7 @@ class Game
                     human_take_turn
                     puts ""
                 else
-                    index = current_player.minimax.minimax(@board, current_player.marker)
-                    current_player.move(index, board)
-                    @turn_counter += 1
+                    computer_take_turn
                 end             
             end
             break
