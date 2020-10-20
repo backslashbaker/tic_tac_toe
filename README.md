@@ -6,7 +6,11 @@
 - [x] add in `if current_player.is_a?(Human)` after `until` statement in `play` function 
 - [x] add a `move` function for Player (and tests)
 - [x] tests will fail - swap X's & O's and initalise with two Humans and overwrite player one's marker?
-- [ ] create `computer_take_turn` method in game
+- [x] create `computer_take_turn` method in game
+- [ ] make methods in game private
+- [ ] import game_logic to minimax
+- [ ] add messages for computer 
+- [ ] add computer choice delay to game flow
 
 ## MoSCoW
 
@@ -15,6 +19,7 @@
 - have Computer start the game
 
 ### Should 
+- have Computer print messages
 
 ### Could 
 - use colour on empty cells
