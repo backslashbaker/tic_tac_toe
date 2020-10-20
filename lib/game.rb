@@ -88,26 +88,5 @@ class Game
             @display.display_board(@board.grid)
         end
     end
-
-
-    # def run
-    #     running = true
-    #     while running
-    #         play
-    #         @display.play_again
-    #         user_choice = $stdin.gets.chomp
-    #         if user_choice == "Y"
-    #             @board.clear
-    #             #@turn_counter = 0
-    #             @display.new_game
-    #             run
-    #         else
-    #             running = false
-    #             @display.game_over
-    #         end
-    #     end
-    # end
-
-   
-
+    
 end
