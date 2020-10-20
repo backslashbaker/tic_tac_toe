@@ -1,5 +1,3 @@
-require_relative 'board'
-
 class Display
 
     def welcome_message 
@@ -30,19 +28,11 @@ class Display
         print "Game has ended as a draw.\n\n"
     end
 
-    def play_again
-        print "Would you like to play again? (Y / N): "
-    end
+    # def play_again
+    #     print "Would you like to play again? (Y / N): "
+    # end
 
-    def new_game
-        print "New game\n\n"
-    end
+    # def new_game
+    #     print "New game\n\n"
+    # end
 end
-
-=begin
- To-do:
- - print messages to assign markers
- - display current player?
- - asks for a new game
- - display a win/draw message
-=end

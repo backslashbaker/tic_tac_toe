@@ -6,32 +6,27 @@ describe Game do
 
     context "in game" do
         it "updates the board when player_one moves" do
-            game = Game.new
-            game.move(0, game.player_one)
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
+            game.player_one.move(0, game.board)
 
-            expect(game.board.grid[0]).to eq("O")
+            expect(game.board.grid[0]).to eq("X")
         end
     end
 
     context "in game" do
-        it "updates turn_counter when player_one moves" do
-            game = Game.new
-            game.move(0, game.player_one)
-
-            expect(game.turn_counter).to eq(1)
-        end
-    end
-
-    context "in game" do
-        it "updates turn_counter when player_one moves" do
-            game = Game.new
-
+        it "updates current_player when player_one moves" do
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
+            
             expect(game.current_player).to eq(game.player_one)
         end
 
-        it "updates turn_counter when player_one moves" do
-            game = Game.new
-            game.move(0, game.player_one)
+        it "updates current_player when player_one moves" do
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
+            allow($stdin).to receive(:gets).and_return(1)
+            game.human_take_turn
 
             expect(game.current_player).to eq(game.player_two)
         end
@@ -39,22 +34,12 @@ describe Game do
 
     context "user takes turn" do
         it "takes user input and marks a valid move" do
-            game = Game.new
+            game = Game.new(Human.new, Human.new)
+            game.player_one.marker = "X"
             allow($stdin).to receive(:gets).and_return(1)
-            game.take_turn
+            game.human_take_turn
 
-            expect(game.board.grid[0]).to eq "O"
-        end
-    end
-
-    context "when the user types 'yes' at the end of the game" do
-        it "plays the game again" do
-            game = Game.new
-
-            allow($stdin).to receive(:gets).and_return("1", "2", "5", "3", "9", "Y", "quit")
-            game.run
-
-            expect{ game.run }.to output(/#{Regexp.quote("New game\n\n")}/).to_stdout
+            expect(game.board.grid[0]).to eq "X"
         end
     end
 
