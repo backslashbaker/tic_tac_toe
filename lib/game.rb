@@ -89,6 +89,7 @@ class Game
         end
     end
 
+
     # def run
     #     running = true
     #     while running
@@ -106,5 +107,7 @@ class Game
     #         end
     #     end
     # end
+
+   
 
 end
