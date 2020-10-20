@@ -75,8 +75,6 @@ class Game
         end
     end
 
-    private
-
     def current_player
         if @turn_counter.even?
             @player_one
