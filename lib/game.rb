@@ -20,8 +20,6 @@ class Game
         @game_over = false
     end
 
-   
-
     def human_take_turn
         @display.request_index
         user_index = $stdin.gets

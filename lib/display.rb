@@ -27,4 +27,8 @@ class Display
     def draw_message
         print "Game has ended as a draw.\n\n"
     end
+
+    def thinking_message
+        print "Hmmmmm I'm thinking...\n\n"
+    end
 end
