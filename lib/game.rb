@@ -50,17 +50,16 @@ class Game
 
     def play
         @display.welcome_message
-        loop do
-            until @board.full? or @game_logic.win?(@board) or @game_over
-                if current_player.is_a?(Human)
-                    @display.display_board(@board.grid)
-                    human_take_turn
-                    puts ""
-                else
-                    computer_take_turn
-                end             
-            end
-            break
+        until @board.full? or @game_logic.win?(@board, previous_player.marker) or @game_over
+            if current_player.is_a?(Human)
+                @display.display_board(@board.grid)
+                human_take_turn
+                puts ""
+            else
+                @display.thinking_message
+                #sleep(1)
+                computer_take_turn
+            end             
         end
         if @game_over
             @display.game_over

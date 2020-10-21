@@ -40,7 +40,7 @@ describe "Tic-Tac-Toe" do
 
             # Act
             allow($stdin).to receive(:gets).and_return("quit")
-            game.play
+            #game.play
 
             # Assert
             expect { game.play }.to output(/#{Regexp.quote("Thanks for playing, see you next time!")}/).to_stdout
@@ -55,7 +55,7 @@ describe "Tic-Tac-Toe" do
 
             # Act
             allow($stdin).to receive(:gets).and_return("q")
-            game.play
+            #game.play
 
             # Assert
             expect { game.play }.to output(/#{Regexp.quote("Thanks for playing, see you next time!")}/).to_stdout
@@ -85,7 +85,7 @@ describe "Tic-Tac-Toe" do
 
             # Act
             allow($stdin).to receive(:gets).and_return("blah")
-            game.human_take_turn
+            #game.human_take_turn
 
             # Assert
             expect { game.human_take_turn }.to output(/#{Regexp.quote("Input error. Try again.\n")}/).to_stdout
@@ -116,7 +116,7 @@ describe "Tic-Tac-Toe" do
 
             # Act 
             allow($stdin).to receive(:gets).and_return(1, 5, 2, 8, 3)
-            game.play
+            #game.play
 
             # Assert
             expect { game.play }.to output(/#{Regexp.quote("X wins!")}/).to_stdout
@@ -131,7 +131,7 @@ describe "Tic-Tac-Toe" do
 
             # Act 
             allow($stdin).to receive(:gets).and_return(9, 1, 5, 2, 8, 3)
-            game.play
+            #game.play
 
             # Assert
             expect { game.play }.to output(/#{Regexp.quote("O wins!")}/).to_stdout
@@ -146,10 +146,23 @@ describe "Tic-Tac-Toe" do
 
             # Act
             allow($stdin).to receive(:gets).and_return(9, 1, 2, 3, 5, 4, 6, 8, 7)
-            game.play
+            #game.play
 
             # Assert
             expect { game.play }.to output(/#{Regexp.quote("Game has ended as a draw.")}/).to_stdout
+        end
+    end
+
+    context "when it is the computer's turn" do
+        it "prints a thinking message" do
+            # Arrange
+            game = Game.new(Computer.new, Human.new)
+
+            # Act
+            allow($stdin).to receive(:gets).and_return(9, "q")
+            
+            # Assert
+            expect { game.play }.to output(a_string_including("Hmmmmm I'm thinking...\n\n")).to_stdout
         end
     end
 
