@@ -2,8 +2,7 @@ require_relative 'minimax'
 
 class Computer < Player
 
-    attr_reader :marker
-    attr_accessor :minimax
+    attr_reader :marker, :minimax
 
     def initialize
         @marker = "X"

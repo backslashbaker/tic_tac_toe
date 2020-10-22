@@ -13,7 +13,7 @@ describe Minimax do
                                                       "O", "X", 6,
                                                       "O", 8, "X"])
 
-            expect(minimax.score(board, COMPUTER)).to eq(1)
+            expect(minimax.minimax(board, COMPUTER)).to eq(1)
         end
 
         context "#score function" do
@@ -36,7 +36,7 @@ describe Minimax do
                                                       "X", "O", 6,
                                                       "X", "O", 9])
 
-            expect(minimax.score(board, COMPUTER)).to eq(-1)
+            expect(minimax.minimax(board, COMPUTER)).to eq(-1)
         end
 
         it "calculates the score for a draw" do
@@ -45,8 +45,9 @@ describe Minimax do
             allow(board).to receive(:grid).and_return(["O", "X", "X",
                                                        "X", "O", "O",
                                                        "X", "O", "X"])
+            allow(board).to receive(:full?).and_return(true)
 
-            expect(minimax.score(board, COMPUTER)).to eq(0)
+            expect(minimax.minimax(board, COMPUTER)).to eq(0)
         end
     end
 

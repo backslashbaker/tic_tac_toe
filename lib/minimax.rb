@@ -7,16 +7,6 @@ class Minimax
         @game_logic = GameLogic.new
     end
 
-    def score(board, marker)
-        if @game_logic.three_in_a_row?(board, marker)
-            return 1
-        elsif @game_logic.three_in_a_row?(board, @game_logic.opponent(marker))
-            return -1
-        else
-            return 0
-        end
-    end
-
     def minimax(board, marker, depth= 0)
         if @game_logic.game_over?(board, marker)
             return score(board, marker)
@@ -41,6 +31,16 @@ class Minimax
     end
 
     private
+
+    def score(board, marker)
+        if @game_logic.three_in_a_row?(board, marker)
+            return 1
+        elsif @game_logic.three_in_a_row?(board, @game_logic.opponent(marker))
+            return -1
+        else
+            return 0
+        end
+    end
 
     def evaluate_score(depth, scores_hash)
         if depth == 0 
