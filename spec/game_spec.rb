@@ -25,8 +25,8 @@ describe Game do
         it "updates current_player when player_one moves" do
             game = Game.new(Human.new, Human.new)
             game.player_one.marker = "X"
-            allow($stdin).to receive(:gets).and_return(1)
-            game.human_take_turn
+            allow($stdin).to receive(:gets).and_return(1, "quit")
+            game.play
 
             expect(game.current_player).to eq(game.player_two)
         end
@@ -36,8 +36,8 @@ describe Game do
         it "takes user input and marks a valid move" do
             game = Game.new(Human.new, Human.new)
             game.player_one.marker = "X"
-            allow($stdin).to receive(:gets).and_return(1)
-            game.human_take_turn
+            allow($stdin).to receive(:gets).and_return(1, "quit")
+            game.play
 
             expect(game.board.grid[0]).to eq "X"
         end
