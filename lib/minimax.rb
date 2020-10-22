@@ -26,10 +26,6 @@ class Minimax
         end
     end
 
-    def empty_spaces(board)
-        board.grid.select { |space| space.is_a?(Integer) }
-    end
-
     private
 
     def score(board, marker)
@@ -48,5 +44,9 @@ class Minimax
         else
             return scores_hash.max_by { |key, value| value }[1]
         end
+    end
+
+    def empty_spaces(board)
+        board.grid.select { |space| space.is_a?(Integer) }
     end
 end

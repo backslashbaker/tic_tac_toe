@@ -64,18 +64,6 @@ describe Minimax do
         end
     end
 
-    context "one empty space" do
-        it "returns 9 as only empty space" do
-            minimax = Minimax.new
-            board = double("Board")
-            allow(board).to receive(:grid).and_return(["X", "O", "O",
-                                                       "O", "X", "X",
-                                                       "O", "X", 9])
-            
-            expect(minimax.empty_spaces(board)).to eq([9])
-        end
-    end
-
     context "When there is one space left" do
         it "returns the index of the best move for X to win" do
             minimax = Minimax.new
