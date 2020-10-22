@@ -15,12 +15,6 @@ class Board
         else
             true
         end
-
-        # if @grid.all? { |square| square == 'X' || square == 'O'}
-        #     true
-        # else
-        #     false
-        # end
     end
 
 end

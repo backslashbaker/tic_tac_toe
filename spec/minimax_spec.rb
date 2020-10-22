@@ -82,6 +82,7 @@ describe Minimax do
             allow(board).to receive(:grid).and_return(["X", "O", "O",
                                                        "O", "X", "X",
                                                        "O", "X", 9])
+            allow(board).to receive(:full?).and_return(false)
             
             expect(minimax.minimax(board, COMPUTER)).to eq(8)
         end
@@ -94,6 +95,7 @@ describe Minimax do
             allow(board).to receive(:grid).and_return([1, "O", "O",
                                                        "O", "X", "X",
                                                        "O", "X", "X"])
+            allow(board).to receive(:full?).and_return(false)
             
             expect(minimax.minimax(board, COMPUTER)).to eq(0)
         end
@@ -106,7 +108,8 @@ describe Minimax do
             allow(board).to receive(:grid).and_return([1, "X", "O",
                                                       "O", "X", "X",
                                                       "O", 8, "O"])
-            
+            allow(board).to receive(:full?).and_return(false)
+
             expect(minimax.minimax(board, COMPUTER)).to eq(7)
         end
 
@@ -117,7 +120,8 @@ describe Minimax do
                 allow(board).to receive(:grid).and_return([1, "X", "O",
                                                            4, "X", "X",
                                                            "O", 8, "O"])
-                
+                allow(board).to receive(:full?).and_return(false)
+
                 expect(minimax.minimax(board, COMPUTER)).to eq(3)
             end
         end
@@ -129,6 +133,7 @@ describe Minimax do
                 allow(board).to receive(:grid).and_return(["O", "X", 3,
                                                            "X", "X", "O",
                                                            7, "O", 9])
+                allow(board).to receive(:full?).and_return(false)
                 
                 expect(minimax.minimax(board, COMPUTER)).to eq(2)
             end
