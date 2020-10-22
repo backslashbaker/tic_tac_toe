@@ -7,16 +7,15 @@
 - [x] add a `move` function for Player (and tests)
 - [x] tests will fail - swap X's & O's and initalise with two Humans and overwrite player one's marker?
 - [x] create `computer_take_turn` method in game
-- [ ] make methods in game private
-- [ ] import game_logic to minimax
-- [ ] add messages for computer 
-- [ ] add computer choice delay to game flow
+- [x] make methods in game private
+- [x] import game_logic to minimax
+- [x] add messages for computer 
+- [x] add computer choice delay to game flow
 
 ## MoSCoW
 
 ### Must
 - implement minimax
-- have Computer start the game
 
 ### Should 
 - have Computer print messages
