@@ -20,12 +20,11 @@ class GameLogic
     end
 
     def win?(board)
-        WINNING_COMBINATIONS.each { |combination|
-            if (board.grid[combination[0]] == board.grid[combination[1]]) && (board.grid[combination[1]] == board.grid[combination[2]])
-                return true
-            end
-        }
-        return false
+        if three_in_a_row?(board, "X") or three_in_a_row?(board, "O")
+            return true
+        else
+            return false
+        end
     end
 
     def draw?(board)
@@ -41,6 +40,17 @@ class GameLogic
         else
             return nil
         end
+    end
+
+    def three_in_a_row?(board, marker)
+        WINNING_COMBINATIONS.each { |combination|
+            if (board.grid[combination[0]] == marker) and 
+                (board.grid[combination[0]] == board.grid[combination[1]]) and
+                (board.grid[combination[1]] == board.grid[combination[2]])
+                return true
+            end
+        }
+        return false
     end
 
     private 

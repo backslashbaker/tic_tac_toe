@@ -20,10 +20,6 @@ class Game
         @game_over = false
     end
 
-    
-
-   
-
     def play
         @display.welcome_message
         until @board.full? or @game_logic.win?(@board) or @game_over
