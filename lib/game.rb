@@ -36,17 +36,7 @@ class Game
         end
     end
 
-    def computer_take_turn
-        if @turn_counter == 0
-            random_index = rand(0..8)
-            current_player.move(random_index, board)
-            @turn_counter += 1
-        else
-            index = current_player.minimax.minimax(@board, current_player.marker)
-            current_player.move(index, board)
-            @turn_counter += 1
-        end
-    end
+   
 
     def play
         @display.welcome_message
@@ -61,15 +51,7 @@ class Game
                 computer_take_turn
             end             
         end
-        if @game_over
-            @display.game_over
-        elsif @game_logic.game_result(@board, previous_player) == nil
-            @display.draw_message
-            @display.display_board(@board.grid)
-        else
-            @display.game_result_message(previous_player)
-            @display.display_board(@board.grid)
-        end
+        game_over
     end
 
     def current_player
@@ -85,6 +67,32 @@ class Game
             @player_one
         else
             player_two
+        end
+    end
+
+    private
+
+    def computer_take_turn
+        if @turn_counter == 0
+            random_index = rand(0..8)
+            current_player.move(random_index, board)
+            @turn_counter += 1
+        else
+            index = current_player.minimax.minimax(@board, current_player.marker)
+            current_player.move(index, board)
+            @turn_counter += 1
+        end
+    end
+
+    def game_over
+        if @game_over
+            @display.game_over
+        elsif @game_logic.game_result(@board, previous_player) == nil
+            @display.draw_message
+            @display.display_board(@board.grid)
+        else
+            @display.game_result_message(previous_player)
+            @display.display_board(@board.grid)
         end
     end
 
