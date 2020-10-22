@@ -33,7 +33,7 @@ class Game
                 computer_take_turn
             end             
         end
-        game_over
+        end_of_game
     end
 
     def current_player
@@ -82,7 +82,7 @@ class Game
         end
     end
 
-    def game_over
+    def end_of_game
         if @game_over
             @display.game_over
         elsif @game_logic.game_result(@board, previous_player) == nil

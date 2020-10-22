@@ -1,4 +1,6 @@
 class GameLogic
+
+    attr_reader :WINNING_COMBINATIONS
     
     WINNING_COMBINATIONS = [
         [0, 1, 2], # top row
@@ -51,6 +53,22 @@ class GameLogic
             end
         }
         return false
+    end
+
+    def game_over?(board, marker)
+        if three_in_a_row?(board, marker) or three_in_a_row?(board, opponent(marker)) or board.full?
+            return true
+        else
+            return false
+        end
+    end
+
+    def opponent(marker)
+        if marker == "X"
+            return "O"
+        else
+            return "X"
+        end
     end
 
     private 

@@ -1,4 +1,5 @@
 require_relative '../lib/minimax'
+require_relative '../lib/game_logic'
 
 COMPUTER = "X"
 HUMAN = "O"
