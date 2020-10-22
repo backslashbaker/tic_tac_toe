@@ -7,7 +7,7 @@ class Minimax
         @game_logic = GameLogic.new
     end
 
-    def minimax(board, marker, depth= 0)
+    def get_best_move(board, marker, depth=0)
         if @game_logic.game_over?(board, marker)
             return score(board, marker)
         else
@@ -18,7 +18,7 @@ class Minimax
                 new_board = Board.new
                 new_board.grid = board.grid.map(&:dup)
                 new_board.grid[space - 1] = marker
-                score = -1 * minimax(new_board, @game_logic.opponent(marker), depth+1)
+                score = -1 * get_best_move(new_board, @game_logic.opponent(marker), depth+1)
                 scores_hash[space] = score
             
             }

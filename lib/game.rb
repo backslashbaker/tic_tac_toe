@@ -76,7 +76,7 @@ class Game
             current_player.move(random_index, board)
             @turn_counter += 1
         else
-            index = current_player.minimax.minimax(@board, current_player.marker)
+            index = current_player.minimax.get_best_move(@board, current_player.marker)
             current_player.move(index, board)
             @turn_counter += 1
         end

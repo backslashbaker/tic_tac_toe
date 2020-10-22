@@ -13,7 +13,7 @@ describe Minimax do
                                                       "O", "X", 6,
                                                       "O", 8, "X"])
 
-            expect(minimax.minimax(board, COMPUTER)).to eq(1)
+            expect(minimax.get_best_move(board, COMPUTER)).to eq(1)
         end
 
         context "#score function" do
@@ -25,7 +25,7 @@ describe Minimax do
                                                            "O", "X", "X"])
                             
                                                 
-                expect(minimax.minimax(board, COMPUTER)).to eq(1)
+                expect(minimax.get_best_move(board, COMPUTER)).to eq(1)
             end
         end
 
@@ -36,7 +36,7 @@ describe Minimax do
                                                       "X", "O", 6,
                                                       "X", "O", 9])
 
-            expect(minimax.minimax(board, COMPUTER)).to eq(-1)
+            expect(minimax.get_best_move(board, COMPUTER)).to eq(-1)
         end
 
         it "calculates the score for a draw" do
@@ -47,7 +47,7 @@ describe Minimax do
                                                        "X", "O", "X"])
             allow(board).to receive(:full?).and_return(true)
 
-            expect(minimax.minimax(board, COMPUTER)).to eq(0)
+            expect(minimax.get_best_move(board, COMPUTER)).to eq(0)
         end
     end
 
@@ -60,7 +60,7 @@ describe Minimax do
                                                        "O", "X", "X"])
                         
                                             
-            expect(minimax.minimax(board, COMPUTER)).to eq(1)
+            expect(minimax.get_best_move(board, COMPUTER)).to eq(1)
         end
     end
 
@@ -73,7 +73,7 @@ describe Minimax do
                                                        "O", "X", 9])
             allow(board).to receive(:full?).and_return(false)
             
-            expect(minimax.minimax(board, COMPUTER)).to eq(8)
+            expect(minimax.get_best_move(board, COMPUTER)).to eq(8)
         end
     end
 
@@ -86,7 +86,7 @@ describe Minimax do
                                                        "O", "X", "X"])
             allow(board).to receive(:full?).and_return(false)
             
-            expect(minimax.minimax(board, COMPUTER)).to eq(0)
+            expect(minimax.get_best_move(board, COMPUTER)).to eq(0)
         end
     end
 
@@ -99,7 +99,7 @@ describe Minimax do
                                                       "O", 8, "O"])
             allow(board).to receive(:full?).and_return(false)
 
-            expect(minimax.minimax(board, COMPUTER)).to eq(7)
+            expect(minimax.get_best_move(board, COMPUTER)).to eq(7)
         end
 
         context "When there are three spaces left" do
@@ -111,7 +111,7 @@ describe Minimax do
                                                            "O", 8, "O"])
                 allow(board).to receive(:full?).and_return(false)
 
-                expect(minimax.minimax(board, COMPUTER)).to eq(3)
+                expect(minimax.get_best_move(board, COMPUTER)).to eq(3)
             end
         end
 
@@ -124,7 +124,7 @@ describe Minimax do
                                                            7, "O", 9])
                 allow(board).to receive(:full?).and_return(false)
                 
-                expect(minimax.minimax(board, COMPUTER)).to eq(2)
+                expect(minimax.get_best_move(board, COMPUTER)).to eq(2)
             end
         end
 
