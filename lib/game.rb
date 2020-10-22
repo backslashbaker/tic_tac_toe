@@ -50,7 +50,7 @@ class Game
 
     def play
         @display.welcome_message
-        until @board.full? or @game_logic.win?(@board, previous_player.marker) or @game_over
+        until @board.full? or @game_logic.win?(@board) or @game_over
             if current_player.is_a?(Human)
                 @display.display_board(@board.grid)
                 human_take_turn
