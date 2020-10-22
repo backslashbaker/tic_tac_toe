@@ -20,21 +20,7 @@ class Game
         @game_over = false
     end
 
-    def human_take_turn
-        @display.request_index
-        user_index = $stdin.gets
-        if user_index.to_s.chomp == "q" or user_index.to_s.chomp == "quit"
-            @game_over = true
-        else
-            user_index = user_index.to_i - 1
-            if @game_logic.valid_move?(@board, user_index)
-                current_player.move(user_index, @board)
-                @turn_counter += 1
-            else
-                @display.error_message
-            end
-        end
-    end
+    
 
    
 
@@ -71,6 +57,22 @@ class Game
     end
 
     private
+
+    def human_take_turn
+        @display.request_index
+        user_index = $stdin.gets
+        if user_index.to_s.chomp == "q" or user_index.to_s.chomp == "quit"
+            @game_over = true
+        else
+            user_index = user_index.to_i - 1
+            if @game_logic.valid_move?(@board, user_index)
+                current_player.move(user_index, @board)
+                @turn_counter += 1
+            else
+                @display.error_message
+            end
+        end
+    end
 
     def computer_take_turn
         if @turn_counter == 0

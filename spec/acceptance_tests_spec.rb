@@ -62,21 +62,6 @@ describe "Tic-Tac-Toe" do
         end
     end
 
-    context "when the user makes a move" do
-        it "it is displayed on the board" do
-            #Arrange
-            game = Game.new(Human.new, Human.new)
-            game.player_one.marker = "X"
-
-            #Act
-            allow($stdin).to receive(:gets).and_return("1")
-            game.human_take_turn
-
-            #Assert
-            expect(game.board.grid).to eq(["X", 2, 3, 4, 5, 6, 7, 8, 9])
-        end
-    end
-
     context "when the user makes an incorrect move" do
         it "displays an error message" do
             # Arrange
@@ -84,11 +69,10 @@ describe "Tic-Tac-Toe" do
             game.player_one.marker = "X"
 
             # Act
-            allow($stdin).to receive(:gets).and_return("blah")
-            #game.human_take_turn
+            allow($stdin).to receive(:gets).and_return("blah", "quit")
 
             # Assert
-            expect { game.human_take_turn }.to output(/#{Regexp.quote("Input error. Try again.\n")}/).to_stdout
+            expect { game.play }.to output(/#{Regexp.quote("Input error. Try again.\n")}/).to_stdout
         end
     end
 
@@ -100,11 +84,10 @@ describe "Tic-Tac-Toe" do
             game.player_one.marker = "X"
 
             # Act
-            allow($stdin).to receive(:gets).and_return("1", "1")
-            game.human_take_turn
+            allow($stdin).to receive(:gets).and_return("1", "1", "quit")
 
             # Assert
-            expect { game.human_take_turn }.to output(/#{Regexp.quote("Input error. Try again.\n")}/).to_stdout
+            expect { game.play }.to output(/#{Regexp.quote("Input error. Try again.\n")}/).to_stdout
         end
     end
 
@@ -116,7 +99,6 @@ describe "Tic-Tac-Toe" do
 
             # Act 
             allow($stdin).to receive(:gets).and_return(1, 5, 2, 8, 3)
-            #game.play
 
             # Assert
             expect { game.play }.to output(/#{Regexp.quote("X wins!")}/).to_stdout
@@ -131,7 +113,6 @@ describe "Tic-Tac-Toe" do
 
             # Act 
             allow($stdin).to receive(:gets).and_return(9, 1, 5, 2, 8, 3)
-            #game.play
 
             # Assert
             expect { game.play }.to output(/#{Regexp.quote("O wins!")}/).to_stdout
@@ -146,7 +127,6 @@ describe "Tic-Tac-Toe" do
 
             # Act
             allow($stdin).to receive(:gets).and_return(9, 1, 2, 3, 5, 4, 6, 8, 7)
-            #game.play
 
             # Assert
             expect { game.play }.to output(/#{Regexp.quote("Game has ended as a draw.")}/).to_stdout
