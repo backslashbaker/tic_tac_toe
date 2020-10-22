@@ -29,7 +29,7 @@ class Game
                 puts ""
             else
                 @display.thinking_message
-                #sleep(1)
+                sleep(1)
                 computer_take_turn
             end             
         end
