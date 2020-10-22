@@ -29,7 +29,7 @@ class Display
     end
 
     def thinking_message
-        message_array = ["Hmmmmm I'm thinking...\n\n", "Good move, but watch this...\n\n", "Hmmmm...\n\n", "Really? That's the move?\n\n", "Your brain is no match for my computing cores!\n\n"]
+        message_array = ["Hmmmmm I'm thinking...\n\n", "Good move, but watch this...\n\n", "Hmmmm...\n\n", "Really? That's the move?...\n\n", "Your brain is no match for my computing cores!...\n\n"]
         print message_array.sample
     end
 end

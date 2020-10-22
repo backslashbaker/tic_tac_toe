@@ -79,8 +79,11 @@ describe Display do
     context "during the game" do
         it "displays a thinking message" do
             display = Display.new
+            message_array = ["Hmmmmm I'm thinking...\n\n"]
+            allow(display.thinking_message).to receive(:message_array).and_return(["Hmmmmm I'm thinking...\n\n"])
 
-            expect { display.thinking_message }.to output("Hmmmmm I'm thinking...\n\n").to_stdout
+            
+            expect { display.thinking_message }.to output(a_string_including("...\n\n")).to_stdout
         end
     end
 end

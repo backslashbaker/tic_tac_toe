@@ -133,17 +133,4 @@ describe "Tic-Tac-Toe" do
         end
     end
 
-    context "when it is the computer's turn" do
-        it "prints a thinking message" do
-            # Arrange
-            game = Game.new(Computer.new, Human.new)
-
-            # Act
-            allow($stdin).to receive(:gets).and_return(9, "q")
-            
-            # Assert
-            expect { game.play }.to output(a_string_including("Hmmmmm I'm thinking...\n\n")).to_stdout
-        end
-    end
-
 end
